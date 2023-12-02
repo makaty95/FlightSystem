@@ -5,6 +5,8 @@ import java.util.*;
 
 public class SearchFlight {
 
+    ArrayList<Integer> test = new ArrayList<Integer>(5);
+
     public void searchFlight() {
         FlightDetails[] f = new FlightDetails[5];
         f[0] = new FlightDetails("101", "Cairo", "Qena", "01:20", "02:10", "First Class  / economy");
