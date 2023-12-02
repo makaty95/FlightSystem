@@ -24,6 +24,9 @@ public class FlightDetails {
 
     }
 
+    public FlightDetails() {
+    }
+
     public String getFlightClass() {
         return FlightClass;
     }
