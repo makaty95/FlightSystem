@@ -3,7 +3,6 @@ package RunProgram;
 import MainClasses.*;
 import Utilities.*;
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,13 +13,14 @@ public class Main {
         Menu.showMenu(); // main menu
         if(Menu.getMenuPrompt() == 1){ // asks user for input
             // user chose to search flights
-            System.out.println("Enter Departure Airport");
+            System.out.print("Enter Departure Airport: ");
             String departureLocationEnter = in.nextLine();
-            System.out.println("Enter Arrival Airport");
+            System.out.print("Enter Arrival Airport: ");
             String arrivalLocationEnter = in.nextLine();
 
             SearchFlight Search = new SearchFlight(departureLocationEnter, arrivalLocationEnter);
-            ArrayList<FlightDetails> fetchedFlights = Search.searchFlights(); // list of maching flights
+            Search.showMachingFlights(); // list of maching flights
+
         }
 
 

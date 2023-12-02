@@ -13,7 +13,8 @@ public class SearchFlight {
     private String departureLocation;
     private String arrivalLocation;
     private String departureDate;
-    ArrayList<FlightDetails> Flights; // virtual flights data to be searched.
+    private ArrayList<FlightDetails> Flights; // virtual flights data to be searched.
+    public ArrayList<FlightDetails> machingFlights;
 
     public SearchFlight(String departureLocation, String arrivalLocation){
         this.departureDate = "NONE";
@@ -21,6 +22,7 @@ public class SearchFlight {
         this.departureLocation = departureLocation;
         this.arrivalLocation = arrivalLocation;
         this.setVirtualData(); // this will be replaced by fetching flights data from the files.
+        machingFlights = searchFlights(); // auto filling
     }
     public SearchFlight(String departureLocation, String arrivalLocation, String departureTime){
             this(departureLocation, arrivalLocation);
@@ -31,7 +33,7 @@ public class SearchFlight {
         this.flightClass = flightClass;
     }
 
-    private void setVirtualData(){
+    protected void setVirtualData(){
         // filling flights with any data.
         Flights = new ArrayList<FlightDetails>(5);
         for (int i = 0; i < 5; i++){
@@ -45,10 +47,45 @@ public class SearchFlight {
 
     }
 
+    public void showMachingFlights(){
+        System.out.println(" Flight number " + " | " + "departure Location" + " | " + "Arrival Location" + " | " + "Departure Time" + " | " + "Arrival Time" + " | " + "        Flight Class");
+        // printing a list of maching flight.
+        for(FlightDetails flight : machingFlights){
+            // just Sout :)
+            System.out.println("      " + flight.flightNum + "       | " + "      " +
+                    flight.departureLocation + "        | " + "      " + flight.arrivalLocation + "       | " +
+                    "      " + flight.departure_time + "    | " + "    " + flight.arrival_time + "    | " + "   " + flight.FlightClass);
 
-    public ArrayList<FlightDetails> searchFlights() {
+        }
+    }
+
+
+    protected ArrayList<FlightDetails> searchFlights() {
         // searching for flights from the container: Flights
 
+
+    collecting_maching_flights: { // this is like a comment block
+
+        ArrayList<FlightDetails> matchingFlights = new ArrayList<FlightDetails>();
+        boolean foundFlights = false; // flag
+        int count = 0; // for array index
+        for (int k = 0; k < Flights.size(); k++) {
+            if (Flights.get(k).departureLocation.equals(this.departureLocation) &&
+                    Flights.get(k).arrivalLocation.equals(this.arrivalLocation)) {
+                matchingFlights.add(new FlightDetails());
+                matchingFlights.set(count, Flights.get(k)); // adding flight to the maching flights
+                count++;
+                foundFlights = true;
+            }
+        }
+        // sorting by time and class (by a comparator)
+
+        return matchingFlights;
+    }
+
+}
+
+}
 
 
         // For Entering Sysdate
@@ -107,24 +144,6 @@ public class SearchFlight {
 //        } while (DepartureDay > 5);
 
 
-        ArrayList<FlightDetails> matchingFlights = new ArrayList<FlightDetails>(Flights.size());
-        boolean foundFlights = false; // flag
-        int count = 0; // for array index
-        for (int k = 0; k < Flights.size(); k++) {
-            if (Flights.get(k).departureLocation.equals(this.departureLocation) &&
-                    Flights.get(k).arrivalLocation.equals(this.arrivalLocation)) {
-                matchingFlights.set(count, Flights.get(k)); // adding flight to the maching flights
-                count++;
-                foundFlights = true;
-            }
-        }
-
-        // sorting by time and class (by a comparator)
-
-        return matchingFlights;
-
-
-
 
 //        if (!foundFlights) {
 //            System.out.println("No flights found for the given airports.");
@@ -134,15 +153,7 @@ public class SearchFlight {
             // To Arrange the flight number Assending based on Departure Time
 
            // Arrays.sort(matchingFlights, 0, count, Comparator.comparing(FlightDetails::getDeparture_time));
-            //System.out.println(" Flight number " + " | " + "departure Location" + " | " + "Arrival Location" + " | " + "Departure Time" + " | " + "Arrival Time" + " | " + "        Flight Class");
 
-//            for (int i = 0; i < count; i++) {
-//
-//                // just Sout :)
-//                System.out.println("      " + matchingFlights[i].flightNum + "       | " + "      " +
-//                        matchingFlights[i].departureLocation + "        | " + "      " + matchingFlights[i].arrivalLocation + "       | " +
-//                        "      " + matchingFlights[i].departure_time + "    | " + "    " + matchingFlights[i].arrival_time + "    | " + "   " + matchingFlights[i].FlightClass);
-//            }
 
 //            System.out.println("Enter the Flight number: ");
 //            In.nextLine();
@@ -161,6 +172,4 @@ public class SearchFlight {
         //}
 
 
-    }
 
-}
