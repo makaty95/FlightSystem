@@ -13,15 +13,14 @@ public class FlightDetails {
     public String FlightClass;
 
 
-    public FlightDetails(String flightNum, String departureLocation, String arrivalLocation, String departure_time, String arrival_time, String FlightClass) {
+    public FlightDetails(String flightNum, String departureLocation, String arrivalLocation, String departure_time, String arrival_time, String FlightClass)
+    {
         this.flightNum = flightNum;
         this.departureLocation = departureLocation;
         this.arrivalLocation = arrivalLocation;
         this.departure_time = departure_time;
         this.arrival_time = arrival_time;
         this.FlightClass = FlightClass;
-
-
     }
 
     public FlightDetails() {
