@@ -84,7 +84,7 @@ public class Passenger {
             System.out.println("Enter your Email");
             Scanner sc = new Scanner(System.in);
             this.PassengerEmail = sc.nextLine();
-            if (this.PassengerEmail.contains("@") && this.PassengerEmail.contains(".com") && (this.PassengerEmail.contains("gmail")) || this.PassengerEmail.contains("outLook") || this.PassengerEmail.contains("yahoo") || this.PassengerEmail.contains("linkedIn")) {
+            if (this.PassengerEmail.contains("@") && this.PassengerEmail.contains(".com")) {
                 valid = true;
             } else {
                 System.out.println("Please enter your correct Email)");
