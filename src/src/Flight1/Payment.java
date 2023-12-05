@@ -1,3 +1,5 @@
+package src.Flight1;
+
 import java.util.*;
 public class Payment {
     private static int counterID = 0;

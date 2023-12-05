@@ -1,3 +1,5 @@
+package src.Flight1;
+
 import javax.xml.namespace.QName;
 import java.util.*;
 
@@ -9,7 +11,8 @@ public class Passenger {
     private String PassengerPhone;
     private String PassengerEmail;
 
-    public Passenger() {
+    public Passenger()
+    {
         this.PassengerID = PassengerID;
         this.PassengerFirstName = PassengerFirstName;
         this.PassengerLastName = PassengerLastName;
@@ -17,44 +20,56 @@ public class Passenger {
         this.PassengerEmail = PassengerEmail;
     }
 
-    public void setPassengerID() {
+    public void setPassengerID()
+    {
         StringBuilder stringBuilder = new StringBuilder();
 
         // Generate the first 3 letters
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++)
+        {
             char letter = (char) ('A' + Math.random() * ('Z' - 'A' + 1));
             stringBuilder.append(letter);
         }
 
         // Generate the next 6 digits
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++)
+        {
             int digit = (int) (Math.random() * 10);
             stringBuilder.append(digit);
         }
         this.PassengerID = stringBuilder.toString();
     }
 
-    public void setPassengerName(String passengerFName, String passengerLName) {
+    public void setPassengerName(String passengerFName, String passengerLName)
+    {
         boolean valid = false;
-        while (!valid) {
+        while (!valid)
+        {
             System.out.println("Enter your First name");
             Scanner sc = new Scanner(System.in);
             this.PassengerFirstName = sc.nextLine();
-            if (passengerFName.matches("^[a-zA-Z]*$")) {
+            if (passengerFName.matches("^[a-zA-Z]*$"))
+            {
                 valid = true;
-            } else {
+            }
+            else
+            {
                 System.out.println("Please enter your correct name");
             }
         }
 
         boolean valid1 = false;
-        while (!valid1) {
+        while (!valid1)
+        {
             System.out.println("Enter your Last name");
             Scanner sc = new Scanner(System.in);
             this.PassengerLastName = sc.nextLine();
-            if (passengerLName.matches("^[a-zA-Z]*$")) {
+            if (passengerLName.matches("^[a-zA-Z]*$"))
+            {
                 valid1 = true;
-            } else {
+            }
+            else
+            {
                 System.out.println("Please enter your correct name");
             }
 
@@ -63,30 +78,40 @@ public class Passenger {
     }
 
 
-    public void setPassengerPhone() {
+    public void setPassengerPhone()
+    {
         boolean valid = false;
-        while (!valid) {
+        while (!valid)
+        {
             System.out.println("Enter your phone number");
             Scanner sc = new Scanner(System.in);
             String phone = sc.nextLine();
-            if (phone.matches("\\d{11}")) {
+            if (phone.matches("\\d{11}"))
+            {
                 valid = true;
                 this.PassengerPhone = phone;
-            } else {
+            }
+            else
+            {
                 System.out.println("Please enter your correct number");
             }
         }
     }
 
-    public void setPassengerEmail(String passengerEmail) {
+    public void setPassengerEmail(String passengerEmail)
+    {
         boolean valid = false;
-        while (!valid) {
+        while (!valid)
+        {
             System.out.println("Enter your Email");
             Scanner sc = new Scanner(System.in);
             this.PassengerEmail = sc.nextLine();
-            if (this.PassengerEmail.contains("@") && this.PassengerEmail.contains(".com")) {
+            if (this.PassengerEmail.contains("@") && this.PassengerEmail.contains(".com"))
+            {
                 valid = true;
-            } else {
+            }
+            else
+            {
                 System.out.println("Please enter your correct Email)");
             }
         }
@@ -109,16 +134,17 @@ public class Passenger {
         return PassengerPhone;
     }
 
-    public void showPassengerInfo() {
-        System.out.println
-                ("Name: " + this.PassengerFirstName + " " + this.PassengerLastName
+    public void showPassengerInfo()
+    {
+        System.out.println ("Name: " + this.PassengerFirstName + " " + this.PassengerLastName
                         + "\nPassenger ID: " + this.PassengerID
                         + "\nEmail: " + this.PassengerEmail
                         + "\nPhone: " + this.PassengerPhone);
     }
 
 
-    public void addPassengerInfo() {
+    public void addPassengerInfo()
+    {
         String FirstName = "", LastName = "";
         setPassengerName(FirstName, LastName);
         setPassengerID();
@@ -127,7 +153,8 @@ public class Passenger {
         setPassengerPhone();
     }
 
-    public void PassengerInfo() {
+    public void PassengerInfo()
+    {
         addPassengerInfo();
         showPassengerInfo();
     }

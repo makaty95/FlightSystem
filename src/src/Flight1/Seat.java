@@ -1,8 +1,10 @@
-public class Seat {
+package src.Flight1;
+
+import java.util.*;
+public  class Seat {
     private int SeatNum;
     private String SeatClass;
-
-    public int getSeatNum() {
+    public int getSeat_Num() {
         return SeatNum;
     }
     public void setSeatNum(int seatNum) {
@@ -11,13 +13,13 @@ public class Seat {
     public String getSeatClass() {
         return SeatClass;
     }
-
     public void setSeatClass(String seatClass) {
         this.SeatClass = SeatClass;
     }
     public String getAvailabilityStatus() {
         return AvailabilityStatus;
     }
+
     public void setAvailabilityStatus(String availabilityStatus) {
         this.AvailabilityStatus = AvailabilityStatus;
     }
