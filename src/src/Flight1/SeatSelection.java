@@ -1,3 +1,5 @@
+package src.Flight1;
+
 import src.Flight1.Seat;
 
 import java.util.ArrayList;
