@@ -1,3 +1,5 @@
+package MainClasses;
+
 import javax.xml.namespace.QName;
 import java.util.*;
 
@@ -112,7 +114,7 @@ public class Passenger {
     public void showPassengerInfo() {
         System.out.println
                 ("Name: " + this.PassengerFirstName + " " + this.PassengerLastName
-                        + "\nPassenger ID: " + this.PassengerID
+                        + "\nMainClasses.Passenger ID: " + this.PassengerID
                         + "\nEmail: " + this.PassengerEmail
                         + "\nPhone: " + this.PassengerPhone);
     }
