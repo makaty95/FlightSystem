@@ -1,5 +1,3 @@
-package src.Flight1;
-
 public class AirPort {
     public int getAirportCode() {
         return airportCode;

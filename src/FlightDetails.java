@@ -1,4 +1,3 @@
-package src.Flight1;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.Month;

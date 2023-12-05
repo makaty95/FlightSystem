@@ -1,5 +1,3 @@
-package src.Flight1;
-
 import java.util.List;
 import java.util.Scanner;
 
