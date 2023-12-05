@@ -21,25 +21,37 @@ public abstract class SeatSelection {
             }
         }
     }
+
+    boolean valid(int i, int j){ /// trivial
+        return (i<height && j<width);
+    }
     public void bookSeat(){
         boolean check = true;
         System.out.println("\nPlease select a seat number :");
         do {
             check = true;
             seatNumber = input.nextInt();
+
             int i, j;
             i = (int) Math.floor((seatNumber - 1) / width);
             j = (seatNumber - 1) % width;
+            if(valid(i, j) == false){
+                System.out.println("choose a valid range number: ");
+                check = false;
+                continue;
+            }
+
             if (seats[i][j].isAvilable()) {
                 seats[i][j].setAvilable(false);
-                System.out.println("\n \t nummber :" + i +"  " + j + " av: " + seats[i][j].isAvilable());
+
             } else {
                 System.out.println("This seat is booked, Please Choose another seat :");
                 check = false;
             }
+
         }while(check == false);
 
-        System.out.println("You have booked seat number : " + seatNumber);
+        System.out.println("You have booked your seat! with number : " + seatNumber);
     }
 
 
@@ -61,7 +73,7 @@ public abstract class SeatSelection {
 
     public void drawSeats() { // draws the flight seats in 4 x width
 
-
+        seats[0][1].setAvilable(false);
         System.out.println("Aircraft Seat Display:");
         for (int i = 0; i < width; i++) {
             System.out.print("=====");
@@ -78,7 +90,9 @@ public abstract class SeatSelection {
                     System.out.print(formattedNumber + " ");
 
                 } else {
-                    System.out.print("X  "); // Occupied seat
+                    String RED = "\u001B[31m";
+                    String RESET = "\u001B[0m";
+                    System.out.print(RED +  "X  " + RESET); // Occupied seat
                 }
 
             }

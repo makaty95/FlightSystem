@@ -4,7 +4,6 @@ import java.util.*;
 public class Passenger {
     private String PassengerID;
     private String PassengerFirstName;
-
     private String PassengerLastName;
     private String PassengerPhone;
     private String PassengerEmail;
