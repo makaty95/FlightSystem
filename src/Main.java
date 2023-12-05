@@ -8,12 +8,15 @@ public class Main {
         int choice = SeatSelection.selectClass(economic,business,firstClass);
         if (choice == 1){
             economic.bookSeat();
+            economic.drawSeats();
         }
         if (choice == 2){
             business.bookSeat();
+            business.drawSeats();
         }
         if (choice == 3){
             firstClass.bookSeat();
+            firstClass.drawSeats();
         }
         /*SearchFlight S = new SearchFlight();
         S.searchFlight();
