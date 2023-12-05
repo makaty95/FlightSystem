@@ -4,6 +4,7 @@ import java.util.*;
 public  class Seat {
     private int SeatNum;
     private String SeatClass;
+    private String AvailabilityStatus;
     public int getSeat_Num() {
         return SeatNum;
     }
@@ -23,7 +24,7 @@ public  class Seat {
     public void setAvailabilityStatus(String availabilityStatus) {
         this.AvailabilityStatus = AvailabilityStatus;
     }
-    private String AvailabilityStatus;
+
     public Seat(int seatNum, String seat_Class) {
         this.SeatNum = SeatNum;
         this.SeatClass = SeatClass;
