@@ -4,8 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        EconomicSeats s = new EconomicSeats(40);
-        s.drawSeats();
+        EconomicSeats s2 = new EconomicSeats(80, "Economy");
+        BusinessSeats s = new BusinessSeats(20, "Business");
+        FirstClassSeats s3 = new FirstClassSeats(20, "FistClass");
+        s2.drawSeats();
 
 
 

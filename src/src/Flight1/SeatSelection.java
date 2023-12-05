@@ -3,54 +3,49 @@ import java.util.ArrayList;
 
 public abstract class SeatSelection {
     int capacity;
+    String seatsClass;
     ArrayList<Seat> flightSeats;
-    public abstract void drawSeats();
 
-}
-class EconomicSeats extends SeatSelection {
-
-    public EconomicSeats(int capacity){
-       this.capacity = capacity;
-       this.flightSeats = new ArrayList<>(capacity);
-    }
-    public void drawSeats(){
-        int width = capacity/4;
+    public void drawSeats() { // draws the flight seats in 4 x width
+        int width = capacity / 4;
         int height = 4;
-        int seats[][] = new int[height][width];
+        Seat seats[][] = new Seat[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
+                seats[i][j] = new Seat(i * (width) + j + 1, seatsClass);
+                seats[i][j].setAvilable(true);
 
-                seats[i][j] = -1;
             }
         }
 
 
         System.out.println("Aircraft Seat Display:");
-
-        for(int i = 0; i<width; i++){
+        for (int i = 0; i < width; i++) {
             System.out.print("=====");
         }
         System.out.println();
 
+
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 System.out.print("| ");
-                if (seats[i][j] != -1) {
-                    System.out.print("X "); // Occupied seat
+
+                if (seats[i][j].isAvilable()) {
+                    String formattedNumber = String.format("%02d", seats[i][j].getSeat_Num());
+                    System.out.print(formattedNumber + " ");
+
                 } else {
-                    String FN = String.format("%02d", i*(width)+j+1);
-                    System.out.print(FN+ " ");
+                    System.out.print("X "); // Occupied seat
                 }
 
             }
             System.out.print("|\n");
-            if(i == 1)
-            {
-                for(int ii = 0; ii<width; ii++){
+            if (i == 1) {
+                for (int ii = 0; ii < width; ii++) {
                     System.out.print("-----");
                 }
                 System.out.print("\n\n");
-                for(int ii = 0; ii<width; ii++){
+                for (int ii = 0; ii < width; ii++) {
                     System.out.print("-----");
                 }
                 System.out.println();
@@ -58,34 +53,43 @@ class EconomicSeats extends SeatSelection {
             }
 
         }
-        for(int i = 0; i<width; i++){
+        for (int i = 0; i < width; i++) {
             System.out.print("=====");
         }
 
     }
+
+
+}
+class EconomicSeats extends SeatSelection {
+
+    public EconomicSeats(int capacity, String _seatsClass) {
+       this.capacity = capacity;
+        this.seatsClass = _seatsClass;
+       this.flightSeats = new ArrayList<>(capacity);
+    }
+
 }
 
 class BusinessSeats extends SeatSelection {
 
-    public BusinessSeats(int capacity){
+    public BusinessSeats(int capacity, String _seatsClass) {
         this.capacity = capacity;
+        this.seatsClass = _seatsClass;
         this.flightSeats = new ArrayList<>(capacity);
     }
-    public void drawSeats(){
 
-    }
 }
 
 
 class FirstClassSeats extends SeatSelection {
 
-    public FirstClassSeats(int capacity){
+    public FirstClassSeats(int capacity, String _seatsClass) {
         this.capacity = capacity;
+        this.seatsClass = _seatsClass;
         this.flightSeats = new ArrayList<>(capacity);
     }
-    public void drawSeats(){
 
-    }
 }
 
 
