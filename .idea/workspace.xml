@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="586e80a6-76ae-4f5d-8ecb-f3c3078afc00" name="Changes" comment="meto meto">
       <change afterPath="$PROJECT_DIR$/src/SeatSelection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/src/Flight1/AirPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirPort.java" afterDir="false" />
@@ -16,6 +17,11 @@
       <change beforePath="$PROJECT_DIR$/src/src/Flight1/SeatSelection.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/src/Flight1/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ticket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/src/Flight1/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
+=======
+    <list default="true" id="f3070114-0862-4f01-9f20-59712c95ce7e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/Flight1/SeatSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Flight1/SeatSelection.java" afterDir="false" />
+>>>>>>> origin/master
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,26 +31,41 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
+=======
+        <option value="Interface" />
+>>>>>>> origin/master
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
     <option name="ROOT_SYNC" value="SYNC" />
+=======
+>>>>>>> origin/master
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2Z7z1bms7GpJFG5hzNGRzgtvP0k" />
+=======
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2Z8SmSd8OMyhCMqjZswcyI5XlyI" />
+>>>>>>> origin/master
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -112,4 +133,26 @@
     <MESSAGE value="meto meto" />
     <option name="LAST_COMMIT_MESSAGE" value="meto meto" />
   </component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Merging master",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f3070114-0862-4f01-9f20-59712c95ce7e" name="Changes" comment="" />
+      <created>1701802374294</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701802374294</updated>
+    </task>
+    <servers />
+  </component>
+>>>>>>> origin/master
 </project>

@@ -1,13 +1,15 @@
+package src.Flight1;
+
+import java.util.*;
 public  class Seat {
-    private int seatNum;
+    private int SeatNum;
     private String SeatClass;
-    private boolean isAvilable;
-    public Seat(int seatNum, String seat_Class) {
-        this.seatNum = seatNum;
-        this.SeatClass = SeatClass;
-    }
+    private String AvailabilityStatus;
     public int getSeat_Num() {
-        return seatNum;
+        return SeatNum;
+    }
+    public void setSeatNum(int seatNum) {
+        this.SeatNum = SeatNum;
     }
     public String getSeatClass() {
         return SeatClass;
@@ -15,14 +17,16 @@ public  class Seat {
     public void setSeatClass(String seatClass) {
         this.SeatClass = SeatClass;
     }
-    public void setSeatNum(int seatNum) {
-        this.seatNum = seatNum;
+    public String getAvailabilityStatus() {
+        return AvailabilityStatus;
     }
 
-    public boolean isAvilable() {
-        return isAvilable;
+    public void setAvailabilityStatus(String availabilityStatus) {
+        this.AvailabilityStatus = AvailabilityStatus;
     }
-    public void setAvilable(boolean avilable) {
-        isAvilable = avilable;
+
+    public Seat(int seatNum, String seat_Class) {
+        this.SeatNum = SeatNum;
+        this.SeatClass = SeatClass;
     }
 }
