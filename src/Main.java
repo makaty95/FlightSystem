@@ -27,6 +27,8 @@ public class Main {
         System.out.println("=====================");
         user.enterData();
         boolean check = true;
+        while(check == true)
+        {
             user.searchFlight();
             user.selectflight();
             System.out.println("To Reserve another Flight press 1 otherwise press 2");
@@ -40,7 +42,12 @@ public class Main {
                 else if (choice != 1){
                     System.out.println("Wrong , try again!");
                 }
+                else {
+                    break;
+                }
             }
+        }
+
 
         System.out.println("===\nEnd\n===");
     }
