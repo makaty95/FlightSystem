@@ -7,18 +7,17 @@ import java.util.Scanner;
 
 public class User {
 
-    public static class SearchFlight {
-
         ArrayListData a = new ArrayListData();
+        Passenger p = new Passenger();
 
-        public void searchFlight() {
+    public void searchFlight() {
 
             Scanner In = new Scanner(System.in);
             // User Search for Departure Airport
             List<FlightDetails> data = ArrayListData.flightDetails();
             List<FlightDetails> matchingFlights = new ArrayList<>();
             LocalDate finalDate=null;
-
+            System.out.println("---------------------------------------------------------");
             System.out.println("Enter Departure Airport");
             String departureLocationEnter = In.nextLine();
 
@@ -37,11 +36,11 @@ public class User {
             if(matchingFlights.size()==0)
             {
                 System.out.println("sorry there is no flights matching with your requirements at the moment");
-             System.exit(0);
+                System.exit(0);
             }
             else {
                 // User choose Day and get the FinalDate
-                 finalDate = Day();
+                finalDate = Day();
             }
             // Sort the list based on departure time
             matchingFlights.sort(Comparator.comparing(FlightDetails::getDeparture_time));
@@ -106,89 +105,120 @@ public class User {
             } while (departureDay > 5);
 
             return finalDate;
-    }
+        }
 
-    }
-static final String flightnumenter=null;
-    public static class SelectFlight {
 
-        SearchFlight day = new SearchFlight();
+    static final String flightnumenter=null;
+
+
         public void selectflight() {
             List<FlightDetails> data = ArrayListData.flightDetails();
             // User select the Flight number
             Scanner In = new Scanner(System.in);
             System.out.println("Choose Flight number");
             String flightnumenter = In.nextLine();
-
-
-
-            // User choose Flight Class
             String flightclassEnter =null;
+            Scanner scanner = new Scanner(System.in);
+            // Display available additional services
+            System.out.println("Available Additional Services:");
+            System.out.println("1. WiFi");
+            System.out.println("2. Meal");
+            System.out.println("3. both");
+            System.out.println("4. Nothings");
+            String adservice = null;
 
-       /*    int check ;
-            do {
-                check = 0;
-                System.out.println("Choose seat Class  (business , first class , economy)");
-                flightclassEnter = In.nextLine().toLowerCase(); // Convert to lowercase to make it case-insensitive
+            Booking booking = new Booking();
+            System.out.print("Enter the number corresponding to the additional service: ");
+            int serviceChoice = scanner.nextInt();
 
-              for (FlightDetails search : data) {
-                    // Check if the entered string is one of the valid options
-                    if (search.flightNum.equals(flightnumenter) ) {
-                        if (search.FlightClass1.equals(flightclassEnter) || search.FlightClass2.equals(flightclassEnter)) {
-                            check = -1;
-                            break; // Exit the loop if a valid input is entered for this flight
-                        } else {
-                            System.out.println("\t\nError 404  ");
-                            check = 1;
-                        }
-                    }
+            switch (serviceChoice) {
+                case 1:
+                {
+                    adservice = "Wifi";
+                    booking.serv = "Wifi";
+                    break;
                 }
-            }while(check==1);*/
+
+                case 2: {
+                    adservice = "Meal";
+                    booking.serv = "Meal";
+                    break;
+                }
+                case 3: {
+                    adservice = "Wifi & Meal";
+                    booking.serv = "Wifi & Meal";
+                }
+                case 4:{
+                    adservice = "Nothings";
+                    booking.serv = "Nothings";
+                }
+                    System.out.println("Invalid choice. Please choose a valid additional service.");
+            }
+
             for (FlightDetails search : data) {
                 if (search.flightNum.equals(flightnumenter) ){
+//                  Add Booking to Passenger
+                    FlightDetails flightInfo = new FlightDetails();
+                    flightInfo = search;
+                    booking.addOneFlight(flightInfo);
+
                     System.out.println("Flight number : "+search.flightNum  + "\n" +
                             "Departure Airport : " + search.departureLocation + "\n" +
-                            "Arrival Airort : " + search.arrivalLocation +"\n" +
+                            "Arrival Airport : " + search.arrivalLocation +"\n" +
                             "Departure time : " + search.departure_time + "\n" +
                             "Arrival time : " + search.arrival_time + "\n" +
                             "Flight price : " +search.getPrice()+" pounds\n " +
-                            "duration of the flight about: "+search.calcDuration()/60+" hours and "+search.calcDuration()%60+" minutes");
-
+                            "duration of the flight about: "+search.calcDuration()/60+" hours and "+search.calcDuration()%60+" minutes" + "\n"+
+                            "additional Services : " + adservice  +"\n"+
+                            "-------------------------------------------");
                 }
-         }
 
-
-
-        }
-}
-    public static class enteringData
-    {
-        public void enterData()
-        {
-            List<FlightDetails> data = ArrayListData.flightDetails();
-            FlightDetails flightData=null;
-            for(FlightDetails search : data) {
-                if (search.flightNum.equals(flightnumenter) ) {
-                    flightData.setArrivalLocation(search.getArrivalLocation());
-                    flightData.setDepartureLocation(search.getDepartureLocation());
-                    flightData.setFlightNum(search.getFlightNum());
-                   flightData.setPrice(search.getPrice());
-                   flightData.duration=(search.duration);
-                }
             }
-            System.out.println("Enter your data");
-            Passenger passenger=new Passenger();
-            passenger.setPassengerName("","");
-            passenger.setPassengerPhone();
-            passenger.setPassengerID();
-            passenger.setPassengerEmail("");
-            //System.out.println("special requirements \n1-special meal \n2-special and medical assistance\n3-baby care\n4-wheelchair service\n5-travelling with pets\n6-thanks");
-          //  Scanner input=new Scanner(System.in);
-           // int number= input.nextInt();
-            //passenger.setService(service);
-            System.out.println("your data is ");
-            passenger.showPassengerInfo();
+            booking.seatForBooking = userSeatSelection();
+            p.addFlight(booking);
+            booking.bookingStatus = userPayment(booking);
+            displaycurrentflights();
         }
-    }
-}
 
+
+        public void enterData() {
+            p.PassengerInfo();
+        }
+    public void displaycurrentflights(){
+            p.getFlights();
+    }
+    public Seat userSeatSelection(){
+        EconomicSeats economic = new EconomicSeats(80, "Economy");
+        BusinessSeats business = new BusinessSeats(40, "Business");
+        FirstClassSeats firstClass = new FirstClassSeats(20, "FistClass");
+        int choice = SeatSelection.selectClass(economic,business,firstClass) ;
+        Seat seat = null;
+//        We need Handle Wrong Choices -> greater than 3 (4 , 5 , ...)
+        if (choice == 1){
+            seat = economic.bookSeat();
+        }
+        if (choice == 2){
+            seat = business.bookSeat();
+        }
+        if (choice == 3){
+            seat = firstClass.bookSeat();
+        }
+        return seat;
+    }
+
+    public boolean  userPayment (Booking booking){
+            Payment pay = new Payment();
+            pay.setPaymentMethod();
+            String sClass = null  , services = null , Sprice = null;
+            int Price = 0;
+//            ArrayList<Booking> bookings = p.getBookings();
+                sClass = booking.seatForBooking.getSeatClass();
+                services = booking.serv;
+                Price = Price + Integer.parseInt(booking.flightInfo.price);
+            Price = pay.calcPaymentAmount(Price , sClass , services);
+            booking.flightInfo.setPrice(String.valueOf(Price)) ;
+            return pay.paymentStatus;
+
+    }
+
+}

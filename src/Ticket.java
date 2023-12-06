@@ -31,19 +31,19 @@ public class Ticket {
 
     private String ticketStatus;
 
-    public static class SelectFlight {
-
-        public void selectflight() {
-            List<FlightDetails> data = ArrayListData.flightDetails();
-            // User select the Flight number
-            Scanner In = new Scanner(System.in);
-            System.out.println("Choose Flight number");
-            String flightnumenter = In.nextLine();
-
-
-            // User choose Flight Class
-
-            }
-        }
+//    public static class SelectFlight {
+//
+//
+//        }        public void selectflight() {
+//        List<FlightDetails> data = ArrayListData.flightDetails();
+//        // User select the Flight number
+//        Scanner In = new Scanner(System.in);
+//        System.out.println("Choose Flight number");
+//        String flightnumenter = In.nextLine();
+//
+//
+//        // User choose Flight Class
+//
+//    }
 
     }

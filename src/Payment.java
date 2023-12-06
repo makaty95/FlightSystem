@@ -1,14 +1,15 @@
 import java.util.*;
 public class Payment {
+
     private static int counterID = 0;
     private int paymentID , paymentAmount;
     private String paymentMethod;
-    private boolean paymentStatus;
+    public boolean paymentStatus;
     Scanner input = new Scanner(System.in);
 
 
     public Payment(){
-        counterID++;
+
         paymentID = counterID;
         paymentMethod = null;
     }
@@ -66,9 +67,33 @@ public class Payment {
         }
 
     }
-    public void calcPaymentAmount(){
-//        Depend on Number of Tickets and Price of every ticket
+    public int calcPaymentAmount(int price , String sClass , String services){
+        int taxes = price , temp = price;
+        if (sClass.equals("FirstClass")){
+            price = price + (int) (taxes * 0.6);
+
+        }
+        else if (sClass.equals("Business")){
+            price = price + (int) (taxes * 0.3);
+        }
+        taxes = temp;
+        if (services.equals("Wifi")){
+            price = (int) (price + (taxes * 0.2));
+
+        }
+
+        else if(services.equals("Meal")){
+            price = (int) (price + (taxes * 0.4));
+        }
+
+        else if (services.equals("Wifi & Meal")){
+            price = (int) (price + (taxes * 0.5));
+        }
+
+        System.out.println("Total Price: " + price);
         this.paymentConfirmation();
+        return (int) price;
+
     }
 
 

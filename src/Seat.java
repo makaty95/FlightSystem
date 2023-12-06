@@ -1,10 +1,14 @@
 public  class Seat {
     private int seatNum;
-    private String SeatClass;
+    public String SeatClass;
+
+    public Seat(){
+
+    }
     private boolean isAvilable;
-    public Seat(int seatNum, String seat_Class) {
+    public Seat(int seatNum, String seatClass) {
         this.seatNum = seatNum;
-        this.SeatClass = SeatClass;
+        this.SeatClass = seatClass;
     }
 
     public int getSeat_Num() {

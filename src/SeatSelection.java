@@ -25,24 +25,27 @@ public abstract class SeatSelection {
     boolean valid(int i, int j){ /// trivial
         return (i<height && j<width);
     }
-    public void bookSeat(){
+
+    public Seat bookSeat(){
         boolean check = true;
+        int a , b;
         System.out.println("\nPlease select a seat number :");
         do {
             check = true;
             seatNumber = input.nextInt();
 
-            int i, j;
-            i = (int) Math.floor((seatNumber - 1) / width);
-            j = (seatNumber - 1) % width;
-            if(valid(i, j) == false){
+
+            a = (int) Math.floor((seatNumber - 1) / width);
+            b = (seatNumber - 1) % width;
+            if(valid(a, b) == false){
                 System.out.println("choose a valid range number: ");
                 check = false;
                 continue;
             }
 
-            if (seats[i][j].isAvilable()) {
-                seats[i][j].setAvilable(false);
+            if (seats[a][b].isAvilable()) {
+                seats[a][b].setAvilable(false);
+
 
             } else {
                 System.out.println("This seat is booked, Please Choose another seat :");
@@ -52,6 +55,8 @@ public abstract class SeatSelection {
         }while(check == false);
 
         System.out.println("You have booked your seat! with number : " + seatNumber);
+        Seat seatForBooking = new Seat(seatNumber , seatsClass);
+        return seatForBooking;
     }
 
 
@@ -113,6 +118,7 @@ public abstract class SeatSelection {
         for (int i = 0; i < width; i++) {
             System.out.print("=====");
         }
+        System.out.println("\n");
 
     }
 
@@ -124,6 +130,8 @@ class EconomicSeats extends SeatSelection {
         super(4, capacity/4);
         this.capacity = capacity;
         this.seatsClass = _seatsClass;
+
+
     }
 
 }
@@ -134,6 +142,7 @@ class BusinessSeats extends SeatSelection {
         super(4, capacity/4);
         this.capacity = capacity;
         this.seatsClass = _seatsClass;
+
     }
 
 }

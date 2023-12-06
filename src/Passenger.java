@@ -7,7 +7,11 @@ public class Passenger {
     private String PassengerLastName;
     private String PassengerPhone;
     private String PassengerEmail;
+    ArrayList<Booking> bookings = new ArrayList<>();
 
+    public  ArrayList<Booking> getBookings (){
+        return bookings;
+    }
     public Passenger()
     {
         this.PassengerID = PassengerID;
@@ -155,5 +159,14 @@ public class Passenger {
         addPassengerInfo();
         showPassengerInfo();
     }
+    public void addFlight (Booking booking){
+        bookings.add(booking);
+    }
+    public void getFlights(){
+        for (int i = 0; i < bookings.size(); i++){
+            bookings.get(i).getFlight();
+        }
+    }
+
 }
 
