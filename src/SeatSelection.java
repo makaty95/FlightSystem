@@ -37,7 +37,7 @@ public abstract class SeatSelection {
 
             a = (int) Math.floor((seatNumber - 1) / width);
             b = (seatNumber - 1) % width;
-            if(valid(a, b) == false){
+            if(!valid(a, b)){
                 System.out.println("choose a valid range number: ");
                 check = false;
                 continue;
