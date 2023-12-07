@@ -46,4 +46,8 @@ public class Ticket {
 //
 //    }
 
+<<<<<<< HEAD
     }
+=======
+}
+>>>>>>> c532873 (Atef)

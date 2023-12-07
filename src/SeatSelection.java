@@ -171,4 +171,7 @@ class FirstClassSeats extends SeatSelection {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c532873 (Atef)
