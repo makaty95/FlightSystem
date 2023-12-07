@@ -129,30 +129,37 @@ public class User {
 
             Booking booking = new Booking();
             System.out.print("Enter the number corresponding to the additional service: ");
-            int serviceChoice = scanner.nextInt();
 
-            switch (serviceChoice) {
-                case 1:
+            while (true){
+                int serviceChoice = scanner.nextInt();
+
+                if (serviceChoice == 1)
                 {
-                    adservice = "Wifi";
-                    booking.serv = "Wifi";
-                    break;
+                        adservice = "Wifi";
+                        booking.serv = "Wifi";
+                        break;
                 }
 
-                case 2: {
-                    adservice = "Meal";
-                    booking.serv = "Meal";
-                    break;
+                else if (serviceChoice == 2)
+                {
+                        adservice = "Meal";
+                        booking.serv = "Meal";
+                        break;
                 }
-                case 3: {
-                    adservice = "Wifi & Meal";
-                    booking.serv = "Wifi & Meal";
+                else if (serviceChoice == 3)
+                {
+                        adservice = "Wifi & Meal";
+                        booking.serv = "Wifi & Meal";
+                        break;
                 }
-                case 4:{
-                    adservice = "Nothings";
-                    booking.serv = "Nothings";
+                else if (serviceChoice == 4)
+                {
+                        adservice = "Nothings";
+                        booking.serv = "Nothings";
+                        break;
                 }
-                    System.out.println("Invalid choice. Please choose a valid additional service.");
+                else
+                    System.out.println("Error !!, Try Again");
             }
 
             for (FlightDetails search : data) {
@@ -197,11 +204,14 @@ public class User {
         if (choice == 1){
             seat = economic.bookSeat();
         }
-        if (choice == 2){
+        else if (choice == 2){
             seat = business.bookSeat();
         }
-        if (choice == 3){
+        else if (choice == 3){
             seat = firstClass.bookSeat();
+        }
+        else {
+
         }
         return seat;
     }
@@ -209,9 +219,8 @@ public class User {
     public boolean  userPayment (Booking booking){
             Payment pay = new Payment();
             pay.setPaymentMethod();
-            String sClass = null  , services = null , Sprice = null;
+            String sClass = null  , services = null ;
             int Price = 0;
-//            ArrayList<Booking> bookings = p.getBookings();
                 sClass = booking.seatForBooking.getSeatClass();
                 services = booking.serv;
                 Price = Price + Integer.parseInt(booking.flightInfo.price);

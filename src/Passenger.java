@@ -13,13 +13,7 @@ public class Passenger {
         return bookings;
     }
     public Passenger()
-    {
-        this.PassengerID = PassengerID;
-        this.PassengerFirstName = PassengerFirstName;
-        this.PassengerLastName = PassengerLastName;
-        this.PassengerPhone = PassengerPhone;
-        this.PassengerEmail = PassengerEmail;
-    }
+    { }
 
     public void setPassengerID()
     {

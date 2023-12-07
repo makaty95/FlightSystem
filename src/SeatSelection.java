@@ -64,16 +64,26 @@ public abstract class SeatSelection {
     public static int selectClass(EconomicSeats economic, BusinessSeats business, FirstClassSeats firstClass) {
         System.out.println("Please enter seat class\n1 -> Economic\n2 -> Business\n3 -> First Class");
         Scanner input = new Scanner(System.in);
+        int choice = 0 ;
+        while (true){
+            choice = input.nextInt();
+            if (choice == 1) {
+                economic.drawSeats();
+                return choice;
 
-        int choice = input.nextInt();
-        if (choice == 1) {
-            economic.drawSeats();
-        } else if (choice == 2) {
-            business.drawSeats();
-        } else if (choice == 3) {
-            firstClass.drawSeats();
+            } else if (choice == 2) {
+                business.drawSeats();
+                return choice;
+
+            } else if (choice == 3) {
+                firstClass.drawSeats();
+                return choice;
+
+            }
+            else {
+                System.out.println("Error !!, Try Again");
+            }
         }
-        return choice;
     }
 
     public void drawSeats() { // draws the flight seats in 4 x width
