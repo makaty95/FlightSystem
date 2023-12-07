@@ -10,6 +10,12 @@ import java.time.format.*;
 public class FlightDetails {
     public String flightNum;
 
+    ArrayList<String> NonValidSeatsBusiness = new ArrayList <String>();
+
+    ArrayList<String> NonValidSeatsEconomic = new ArrayList <String>() ;
+    ArrayList<String> NonValidSeatsFirstClass = new ArrayList <String>();
+
+
     public String getDeparture_time() {
         return departure_time;
     }
@@ -75,6 +81,17 @@ public class FlightDetails {
         this.arrivalLocation = arrivalLocation;
         this.departure_time = departure_time;
         this.arrival_time = arrival_time;
+        ///////////////////////////////////
+        //========================
+        // ONLY TO TEST BY ASHRAF
+        //========================
+        NonValidSeatsBusiness.add("01");
+        NonValidSeatsBusiness.add("02");
+        NonValidSeatsBusiness.add("03");
+        NonValidSeatsBusiness.add("04");
+        NonValidSeatsBusiness.add("10");
+        ///////////////////////////////////
+
     }
     public String getFlightNum() {
         return flightNum;
@@ -96,5 +113,16 @@ public class FlightDetails {
     public void setArrivalLocation(String arrivalLocation) {
         this.arrivalLocation = arrivalLocation;
     }
+
+    public void displayFlightInfo(){
+        System.out.println("Flight number : "+flightNum  + "\n" +
+                "Departure Airport : " + departureLocation + "\n" +
+                "Arrival Airport : " + arrivalLocation +"\n" +
+                "Departure time : " + departure_time + "\n" +
+                "Arrival time : " + arrival_time + "\n" +
+                "Flight price : " + getPrice()+" pounds\n" +
+                "Duration of the flight about: "+ calcDuration()/60+" hours and "+ calcDuration()%60+" minutes");
+    }
 }
+
 // flight     p      num od seat    num of tickets

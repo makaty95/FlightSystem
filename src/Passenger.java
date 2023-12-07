@@ -9,9 +9,6 @@ public class Passenger {
     private String PassengerEmail;
     ArrayList<Booking> bookings = new ArrayList<>();
 
-    public  ArrayList<Booking> getBookings (){
-        return bookings;
-    }
     public Passenger()
     { }
 
@@ -161,13 +158,17 @@ public class Passenger {
     }
     public void getTotalBookings(){
         for (int i = 0; i < bookings.size(); i++){
-            bookings.get(i).getFlight();
+            int count = i + 1;
+            System.out.println("================");
+            System.out.println("Reservation [" + count + "]");
+            System.out.println("================");
+            bookings.get(i).getReservations();
         }
     }
     public int getNumBookings(){
         return bookings.size();
     }
     public void getLastBooking(){
-        bookings.get(bookings.size()-1).getFlight();
+        bookings.get(bookings.size()-1).getReservations();
     }
 }

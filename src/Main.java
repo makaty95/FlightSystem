@@ -21,35 +21,51 @@ public class Main {
             a.addflightdetails(f[i]);
         }
 
-        // 104       |       Cairo        |       Alex       |       01:00    |     07:05    |    6 hours and  5 minutes   | 2023-12-10      |    seat[60]
         Scanner in = new Scanner(System.in);
         System.out.println("=====================");
         System.out.println("Reserve Flight Now !!");
         System.out.println("=====================");
         user.enterData();
         boolean check = true;
+        user.searchFlight();
+        user.selectflight();
+
         while(check)
         {
-            user.searchFlight();
-            user.selectflight();
-            System.out.println("To Reserve another Flight press 1 otherwise press 2");
+            System.out.println( "1. Reserve Another Flight" + "\n" +
+                                "2. View All Reservations" + "\n" +
+                                "3. Cancel Reservations" + "\n" +
+                                "4. Close");
             while (true){
                 int choice = in.nextInt();
-                if (choice == 2)
+                if (choice == 1) {
+                    user.searchFlight();
+                    user.selectflight();
+                    break;
+                }
+                if (choice == 2){
+                    user.displayAllReservations();
+                    break;
+
+                }
+                else if (choice == 3){
+                    user.displayAllReservations();
+                    user.cancelFlight();
+                    user.displayAllReservations();
+                    break;
+
+                }
+                else if (choice == 4)
                 {
                     check = false;
                     break;
                 }
-                else if (choice != 1){
-                    System.out.println("Wrong , try again!");
-                }
+
                 else {
-                    break;
+                    System.out.println("Wrong , try again!");
                 }
             }
         }
-
-
         System.out.println("===\nEnd\n===");
     }
 }

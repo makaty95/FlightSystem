@@ -45,8 +45,6 @@ public abstract class SeatSelection {
 
             if (seats[a][b].isAvilable()) {
                 seats[a][b].setAvilable(false);
-
-
             } else {
                 System.out.println("This seat is booked, Please Choose another seat :");
                 check = false;
@@ -61,22 +59,22 @@ public abstract class SeatSelection {
 
 
 
-    public static int selectClass(EconomicSeats economic, BusinessSeats business, FirstClassSeats firstClass) {
+    public static int selectClass(EconomicSeats economic, BusinessSeats business, FirstClassSeats firstClass , ArrayList<String> NSE , ArrayList<String> NSF, ArrayList<String> NSB ) {
         System.out.println("Please enter seat class\n1 -> Economic\n2 -> Business\n3 -> First Class");
         Scanner input = new Scanner(System.in);
         int choice = 0 ;
         while (true){
             choice = input.nextInt();
             if (choice == 1) {
-                economic.drawSeats();
+                economic.drawSeats(NSE);
                 return choice;
 
             } else if (choice == 2) {
-                business.drawSeats();
+                business.drawSeats(NSB);
                 return choice;
 
             } else if (choice == 3) {
-                firstClass.drawSeats();
+                firstClass.drawSeats(NSF);
                 return choice;
 
             }
@@ -86,25 +84,31 @@ public abstract class SeatSelection {
         }
     }
 
-    public void drawSeats() { // draws the flight seats in 4 x width
+    public void drawSeats(ArrayList<String> NS) { // draws the flight seats in 4 x width
 
-        seats[0][1].setAvilable(false);
+
         System.out.println("Aircraft Seat Display:");
         for (int i = 0; i < width; i++) {
             System.out.print("=====");
         }
-        System.out.println();
+        System.out.println("=");
 
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 System.out.print("| ");
-
-                if (seats[i][j].isAvilable()) {
-                    String formattedNumber = String.format("%02d", seats[i][j].getSeat_Num());
+                String formattedNumber = String.format("%02d", seats[i][j].getSeat_Num());
+                boolean check = true;
+            for (String S: NS){
+                if (formattedNumber.equals(S)){
+                    check = false;
+                    break;
+                }
+            }
+                if (check == true) {
                     System.out.print(formattedNumber + " ");
-
                 } else {
+                    seats[i][j].setAvilable(false);
                     String RED = "\u001B[31m";
                     String RESET = "\u001B[0m";
                     System.out.print(RED +  "X  " + RESET); // Occupied seat
@@ -116,11 +120,12 @@ public abstract class SeatSelection {
                 for (int ii = 0; ii < width; ii++) {
                     System.out.print("-----");
                 }
+                System.out.println("-");
                 System.out.print("\n\n");
                 for (int ii = 0; ii < width; ii++) {
                     System.out.print("-----");
                 }
-                System.out.println();
+                System.out.println("-");
 
             }
 
@@ -128,7 +133,7 @@ public abstract class SeatSelection {
         for (int i = 0; i < width; i++) {
             System.out.print("=====");
         }
-        System.out.println("\n");
+        System.out.println("=\n");
 
     }
 

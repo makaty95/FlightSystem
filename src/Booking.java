@@ -8,14 +8,9 @@ public class Booking {
     public  void addOneFlight(FlightDetails flightInfo){
         this.flightInfo = flightInfo;
     }
-    public  void getFlight (){
-        System.out.println("Flight number : "+flightInfo.flightNum  + "\n" +
-                "Departure Airport : " + flightInfo.departureLocation + "\n" +
-                "Arrival Airort : " + flightInfo.arrivalLocation +"\n" +
-                "Departure time : " + flightInfo.departure_time + "\n" +
-                "Arrival time : " + flightInfo.arrival_time + "\n" +
-                "Flight price : " +flightInfo.getPrice()+" pounds\n" +
-                "duration of the flight about: "+flightInfo.calcDuration()/60+" hours and "+flightInfo.calcDuration()%60+" minutes" + "\n"+
+    public  void getReservations (){
+        flightInfo.displayFlightInfo();
+        System.out.println(
                 "Seat Number: " + seatForBooking.getSeat_Num() + "\n"+
                 "Seat Class: " + seatForBooking.getSeatClass() + "\n"+
                 "Seat Services: " + serv);
