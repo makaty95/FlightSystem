@@ -2,11 +2,7 @@ public class Booking {
     public Seat seatForBooking;
     public String serv;
     boolean bookingStatus;
-<<<<<<< HEAD
-     public FlightDetails flightInfo;
-=======
     public FlightDetails flightInfo;
->>>>>>> c532873 (Atef)
 
 
     public  void addOneFlight(FlightDetails flightInfo){
@@ -34,8 +30,4 @@ public class Booking {
             System.out.println("Booking Status: " + RED + "Rejected" + RESET + "\n-------------------------------------------");
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c532873 (Atef)

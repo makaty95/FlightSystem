@@ -43,21 +43,14 @@ public class Passenger {
             System.out.println("Enter your First name");
             Scanner sc = new Scanner(System.in);
             this.PassengerFirstName = sc.nextLine();
-<<<<<<< HEAD
-            if (passengerFName.matches("^[a-zA-Z]*$"))
-=======
             if (PassengerFirstName.matches("^[a-zA-Z]*$")&&this.PassengerFirstName.length()>0)
->>>>>>> c532873 (Atef)
             {
                 valid = true;
             }
             else
             {
                 System.out.println("Please enter your correct name");
-<<<<<<< HEAD
-=======
                 passengerFName="";
->>>>>>> c532873 (Atef)
             }
         }
 
@@ -67,21 +60,14 @@ public class Passenger {
             System.out.println("Enter your Last name");
             Scanner sc = new Scanner(System.in);
             this.PassengerLastName = sc.nextLine();
-<<<<<<< HEAD
-            if (passengerLName.matches("^[a-zA-Z]*$"))
-=======
             if (passengerLName.matches("^[a-zA-Z]*$")&&this.PassengerLastName.length()>0)
->>>>>>> c532873 (Atef)
             {
                 valid1 = true;
             }
             else
             {
                 System.out.println("Please enter your correct name");
-<<<<<<< HEAD
-=======
                 passengerLName="";
->>>>>>> c532873 (Atef)
             }
 
 
@@ -97,12 +83,8 @@ public class Passenger {
             System.out.println("Enter your phone number");
             Scanner sc = new Scanner(System.in);
             String phone = sc.nextLine();
-<<<<<<< HEAD
-            if (phone.matches("\\d{11}"))
-=======
             this.PassengerPhone=phone;
             if (this.PassengerPhone.matches("\\d{11}")&&this.PassengerPhone.length()>0)
->>>>>>> c532873 (Atef)
             {
                 valid = true;
                 this.PassengerPhone = phone;
@@ -153,15 +135,9 @@ public class Passenger {
     public void showPassengerInfo()
     {
         System.out.println ("Name: " + this.PassengerFirstName + " " + this.PassengerLastName
-<<<<<<< HEAD
-                        + "\nPassenger ID: " + this.PassengerID
-                        + "\nEmail: " + this.PassengerEmail
-                        + "\nPhone: " + this.PassengerPhone);
-=======
                 + "\nPassenger ID: " + this.PassengerID
                 + "\nEmail: " + this.PassengerEmail
                 + "\nPhone: " + this.PassengerPhone);
->>>>>>> c532873 (Atef)
     }
 
 
@@ -183,20 +159,11 @@ public class Passenger {
     public void addFlight (Booking booking){
         bookings.add(booking);
     }
-<<<<<<< HEAD
-    public void getFlights(){
-=======
     public void getTotalBookings(){
->>>>>>> c532873 (Atef)
         for (int i = 0; i < bookings.size(); i++){
             bookings.get(i).getFlight();
         }
     }
-<<<<<<< HEAD
-
-}
-
-=======
     public int getNumBookings(){
         return bookings.size();
     }
@@ -204,4 +171,3 @@ public class Passenger {
         bookings.get(bookings.size()-1).getFlight();
     }
 }
->>>>>>> c532873 (Atef)

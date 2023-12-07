@@ -40,36 +40,6 @@ public class FlightDetails {
     public String price,duration;
     public String departure_time, arrival_time;
 
-<<<<<<< HEAD
-//not a clean code don't touch it please
-int calcDuration()
-{
-    char s=getArrival_time().charAt(0);
-    char d=getArrival_time().charAt(1);
-    String hour1= String.valueOf(s+d);
-    int a=Integer.parseInt(hour1);//الكبير
-
-    char q=getDeparture_time().charAt(0);
-    char w=getDeparture_time().charAt(1);
-    String hour2= String.valueOf(q+w);
-    int b=Integer.parseInt(hour2);//الصغنن
-
-    char z=getArrival_time().charAt(3);
-    char x=getArrival_time().charAt(4);
-    String minute1= String.valueOf(z+x);
-    int c=Integer.parseInt(minute1);//كبير دقايق
-
-    char t=getDeparture_time().charAt(3);
-    char y=getDeparture_time().charAt(4);
-    String minute2= String.valueOf(t+y);//صغنن دقيق
-
-    int n=Integer.parseInt(minute2);
-    c+=(a*60);
-    n+=(b*60);
-    return c-n;
-
-}
-=======
     //not a clean code don't touch it please
     int calcDuration()
     {
@@ -97,7 +67,6 @@ int calcDuration()
         n+=(b*60);
         return c-n;
     }
->>>>>>> c532873 (Atef)
     public FlightDetails(String flightNum, String departureLocation, String arrivalLocation, String departure_time, String arrival_time,String price)
     {
         this.flightNum = flightNum;
@@ -106,41 +75,6 @@ int calcDuration()
         this.arrivalLocation = arrivalLocation;
         this.departure_time = departure_time;
         this.arrival_time = arrival_time;
-<<<<<<< HEAD
-}
-    public String getFlightNum() {
-        return flightNum;
-    }
-
-    public FlightDetails() {
-    }
-
-    public void setFlightNum(String flightNum) {
-        this.flightNum = flightNum;
-    }
-
-    public String getDepartureLocation() {
-        return departureLocation;
-    }
-
-    public void setDepartureLocation(String departureLocation) {
-        this.departureLocation = departureLocation;
-    }
-
-    public String getArrivalLocation() {
-        return arrivalLocation;
-    }
-
-    public void setArrivalLocation(String arrivalLocation) {
-        this.arrivalLocation = arrivalLocation;
-    }
-
-
-
-
-}
-
-=======
     }
     public String getFlightNum() {
         return flightNum;
@@ -164,4 +98,3 @@ int calcDuration()
     }
 }
 // flight     p      num od seat    num of tickets
->>>>>>> c532873 (Atef)

@@ -15,11 +15,7 @@ public class ArrayListData
         Listdata.add(flight);
     }
 
-<<<<<<< HEAD
-   public void ShowFlightDetails(){
-=======
     public void ShowFlightDetails(){
->>>>>>> c532873 (Atef)
         for (FlightDetails details : Listdata){
 
             System.out.println("      " + details.flightNum + "       | " + "      " +
@@ -33,8 +29,4 @@ public class ArrayListData
           System.out.println( "        " + "      " + details.departureLocation + "        | "+ "      " + details.arrivalLocation + "       | "  + details.FlightClass1 + "  |  " + details.FlightClass2);
       }
   }*/
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c532873 (Atef)

@@ -32,8 +32,4 @@ public  class Seat {
     public void setAvilable(boolean avilable) {
         isAvilable = avilable;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c532873 (Atef)

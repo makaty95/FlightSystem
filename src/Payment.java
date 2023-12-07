@@ -68,19 +68,6 @@ public class Payment {
 
     }
     public int calcPaymentAmount(int price , String sClass , String services){
-<<<<<<< HEAD
-        int taxes = price , temp = price;
-        if (sClass.equals("FirstClass")){
-            price = price + (int) (taxes * 0.6);
-
-        }
-        else if (sClass.equals("Business")){
-            price = price + (int) (taxes * 0.3);
-        }
-        taxes = temp;
-        if (services.equals("Wifi")){
-            price = (int) (price + (taxes * 0.2));
-=======
         int taxes = price , temp = price,fees=600;
         if (sClass.equals("FirstClass")){
             price = price + (int) (taxes * 0.3);
@@ -95,36 +82,19 @@ public class Payment {
         taxes = temp;
         if (services.equals("Wifi")){
             price = (int) (price + (taxes * 0.05));
->>>>>>> c532873 (Atef)
 
         }
 
         else if(services.equals("Meal")){
-<<<<<<< HEAD
-            price = (int) (price + (taxes * 0.4));
-        }
-
-        else if (services.equals("Wifi & Meal")){
-            price = (int) (price + (taxes * 0.5));
-=======
             price = (int) (price + (taxes * 0.05));
         }
 
         else if (services.equals("Wifi & Meal")){
             price = (int) (price + (taxes * 0.1));
->>>>>>> c532873 (Atef)
         }
 
         System.out.println("Total Price: " + price);
         this.paymentConfirmation();
-<<<<<<< HEAD
-        return (int) price;
-
-    }
-
-
-=======
         return (int) price+fees;
     }
->>>>>>> c532873 (Atef)
 }
