@@ -27,7 +27,7 @@ public class Main {
         System.out.println("=====================");
         user.enterData();
         boolean check = true;
-        while(check) // mesh lazem 3la fekra momken while(check) :)
+        while(check)
         {
             user.searchFlight();
             user.selectflight();
