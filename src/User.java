@@ -260,6 +260,8 @@ public class User {
                         String S = p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.get(i);
                         if (formattedNumber.equals(S)) {
                             p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.remove(i);
+                            break;
+
                         }
                     }
                     break;
@@ -269,6 +271,8 @@ public class User {
                         String S = p.bookings.get(choice).flightInfo.NonValidSeatsBusiness.get(i);
                         if (formattedNumber.equals(S)) {
                             p.bookings.get(choice).flightInfo.NonValidSeatsBusiness.remove(i);
+                            break;
+
                         }
                     }
                     break;
@@ -278,6 +282,7 @@ public class User {
                         String S = p.bookings.get(choice).flightInfo.NonValidSeatsFirstClass.get(i);
                         if (formattedNumber.equals(S)) {
                             p.bookings.get(choice).flightInfo.NonValidSeatsFirstClass.remove(i);
+                            break;
                         }
                     }
                     break;
