@@ -37,7 +37,7 @@ public class Passenger {
         boolean valid = false;
         while (!valid)
         {
-            System.out.println("Enter your First name");
+            System.out.print("Enter your First name: ");
             Scanner sc = new Scanner(System.in);
             this.PassengerFirstName = sc.nextLine();
             if (PassengerFirstName.matches("^[a-zA-Z]*$")&&this.PassengerFirstName.length()>0)
@@ -54,7 +54,7 @@ public class Passenger {
         boolean valid1 = false;
         while (!valid1)
         {
-            System.out.println("Enter your Last name");
+            System.out.print("Enter your Last name: ");
             Scanner sc = new Scanner(System.in);
             this.PassengerLastName = sc.nextLine();
             if (passengerLName.matches("^[a-zA-Z]*$")&&this.PassengerLastName.length()>0)
@@ -77,11 +77,11 @@ public class Passenger {
         boolean valid = false;
         while (!valid)
         {
-            System.out.println("Enter your phone number");
+            System.out.print("Enter your phone number: ");
             Scanner sc = new Scanner(System.in);
             String phone = sc.nextLine();
             this.PassengerPhone=phone;
-            if (this.PassengerPhone.matches("\\d{11}")&&this.PassengerPhone.length()>0)
+            if (this.PassengerPhone.matches("\\d{11}") && !this.PassengerPhone.isEmpty() && this.PassengerPhone.charAt(0) == '0')
             {
                 valid = true;
                 this.PassengerPhone = phone;
@@ -98,10 +98,11 @@ public class Passenger {
         boolean valid = false;
         while (!valid)
         {
-            System.out.println("Enter your Email");
+            System.out.print("Enter your Email: ");
             Scanner sc = new Scanner(System.in);
             this.PassengerEmail = sc.nextLine();
-            if (this.PassengerEmail.contains("@") && this.PassengerEmail.contains(".com"))
+            if (this.PassengerEmail.contains("@") &&
+                    this.PassengerEmail.contains(".com"))
             {
                 valid = true;
             }

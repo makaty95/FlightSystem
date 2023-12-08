@@ -18,30 +18,32 @@ public class User {
         List<FlightDetails> matchingFlights = new ArrayList<>();
         LocalDate finalDate=null;
         System.out.println("---------------------------------------------------------");
+        boolean flag;
+        do{
+            flag = false;
+            System.out.print("Enter Departure Airport: ");
+            String departureLocationEnter = In.nextLine();
 
-        System.out.println("Enter Departure Airport");
-        String departureLocationEnter = In.nextLine();
-
-        // User Search for Arrival Airport
-        System.out.println("Enter Arrival Airport");
-        String arrivalLocationEnter = In.nextLine();
+            // User Search for Arrival Airport
+            System.out.print("Enter Arrival Airport: ");
+            String arrivalLocationEnter = In.nextLine();
 
 
-        // Search by Departure airport and arrival airport in the Arraylist
-        for (FlightDetails search : data) {
-            if (search.departureLocation.equals(departureLocationEnter) && search.arrivalLocation.equals(arrivalLocationEnter)) {
-                matchingFlights.add(search);
+            // Search by Departure airport and arrival airport in the Arraylist
+            for (FlightDetails search : data) {
+                if (search.departureLocation.equals(departureLocationEnter) && search.arrivalLocation.equals(arrivalLocationEnter)) {
+                    matchingFlights.add(search);
+                }
             }
-        }
-        if(matchingFlights.size()==0)
-        {
-            System.out.println("sorry there is no flights matching with your requirements at the moment");
-            System.exit(0);
-        }
-        else {
-            // User choose Day and get the FinalDate
-            finalDate = Day();
-        }
+            if(matchingFlights.isEmpty())
+            {
+                flag = true;
+                System.out.println("sorry there is no flights matching with your requirements at the moment :(");
+            }
+
+        }while(flag);
+        // User choose Day and get the FinalDate
+        finalDate = Day();
         // Sort the list based on departure time
         matchingFlights.sort(Comparator.comparing(FlightDetails::getDeparture_time));
 
@@ -85,7 +87,7 @@ public class User {
             System.out.print(5 + "--> ");
             System.out.println(dtf.format(after4days));
 
-            System.out.println("Choose Day");
+            System.out.print("Choose Day: ");
             departureDay = In.nextInt();
 
             if (departureDay > 5 || departureDay < 1) {
@@ -120,7 +122,7 @@ public class User {
         Scanner In = new Scanner(System.in);
         boolean c = false;
         while  (true){
-            System.out.println("Choose Flight number");
+            System.out.print("Choose Flight number: ");
             String flightnumenter = In.nextLine();
             for (FlightDetails f : data){
                 if (f.flightNum.equals(flightnumenter)){
@@ -244,7 +246,7 @@ public class User {
 
     }
     void cancelFlight() {
-        System.out.println("Please enter the reservation number you want to cancel");
+        System.out.print("Please enter the reservation number you want to cancel: ");
         int choice;
         while (true) {
             Scanner In = new Scanner(System.in);

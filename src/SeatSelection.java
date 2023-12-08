@@ -35,7 +35,7 @@ public abstract class SeatSelection {
             seatNumber = input.nextInt();
 
 
-            a = (int) Math.floor((seatNumber - 1) / width);
+            a = (int) Math.floor((double) (seatNumber - 1) / width);
             b = (seatNumber - 1) % width;
             if(!valid(a, b)){
                 System.out.println("choose a valid range number: ");
@@ -50,7 +50,7 @@ public abstract class SeatSelection {
                 check = false;
             }
 
-        }while(check == false);
+        }while(!check);
 
         System.out.println("You have booked your seat! with number : " + seatNumber);
         Seat seatForBooking = new Seat(seatNumber , seatsClass);
@@ -68,7 +68,6 @@ public abstract class SeatSelection {
             if (choice == 1) {
                 economic.drawSeats(NSE);
                 return choice;
-
             } else if (choice == 2) {
                 business.drawSeats(NSB);
                 return choice;
@@ -89,30 +88,31 @@ public abstract class SeatSelection {
 
         System.out.println("Aircraft Seat Display:");
         for (int i = 0; i < width; i++) {
-            System.out.print("=====");
+            System.out.print("=[]==");
+
         }
         System.out.println("=");
 
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                System.out.print("| ");
-                String formattedNumber = String.format("%02d", seats[i][j].getSeat_Num());
-                boolean check = true;
-            for (String S: NS){
-                if (formattedNumber.equals(S)){
-                    check = false;
-                    break;
-                }
-            }
-                if (check == true) {
-                    System.out.print(formattedNumber + " ");
-                } else {
-                    seats[i][j].setAvilable(false);
-                    String RED = "\u001B[31m";
-                    String RESET = "\u001B[0m";
-                    System.out.print(RED +  "X  " + RESET); // Occupied seat
-                }
+                    System.out.print("| ");
+                    String formattedNumber = String.format("%02d", seats[i][j].getSeat_Num());
+                    boolean check = true;
+                    for (String S: NS){
+                        if (formattedNumber.equals(S)){
+                            check = false;
+                            break;
+                        }
+                    }
+                    if (check) {
+                        System.out.print(formattedNumber + " ");
+                    } else {
+                        seats[i][j].setAvilable(false);
+                        String RED = "\u001B[31m";
+                        String RESET = "\u001B[0m";
+                        System.out.print(RED +  "X  " + RESET); // Occupied seat
+                    }
 
             }
             System.out.print("|\n");
@@ -145,8 +145,6 @@ class EconomicSeats extends SeatSelection {
         super(4, capacity/4);
         this.capacity = capacity;
         this.seatsClass = _seatsClass;
-
-
     }
 
 }
@@ -157,7 +155,6 @@ class BusinessSeats extends SeatSelection {
         super(4, capacity/4);
         this.capacity = capacity;
         this.seatsClass = _seatsClass;
-
     }
 
 }
