@@ -88,7 +88,7 @@ public abstract class SeatSelection {
 
         System.out.println("Aircraft Seat Display:");
         for (int i = 0; i < width; i++) {
-            System.out.print("=[]==");
+            System.out.print("==[]=");
 
         }
         System.out.println("=");
@@ -131,7 +131,7 @@ public abstract class SeatSelection {
 
         }
         for (int i = 0; i < width; i++) {
-            System.out.print("=====");
+            System.out.print("==[]=");
         }
         System.out.println("=\n");
 

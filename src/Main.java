@@ -27,7 +27,6 @@ public class Main {
         user.enterData();
         boolean check = true;
         user.searchFlight();
-        user.selectflight();
 
         while(check)
         {
@@ -39,7 +38,6 @@ public class Main {
                 int choice = in.nextInt();
                 if (choice == 1) {
                     user.searchFlight();
-                    user.selectflight();
                     break;
                 }
                 if (choice == 2){
@@ -50,7 +48,6 @@ public class Main {
                 else if (choice == 3){
                     user.displayAllReservations();
                     user.cancelFlight();
-                    user.displayAllReservations();
                     break;
 
                 }

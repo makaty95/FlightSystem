@@ -16,17 +16,19 @@ public class User {
         // User Search for Departure Airport
         List<FlightDetails> data = ArrayListData.flightDetails();
         List<FlightDetails> matchingFlights = new ArrayList<>();
+        String departureLocationEnter;
+        String arrivalLocationEnter;
         LocalDate finalDate=null;
         System.out.println("---------------------------------------------------------");
         boolean flag;
         do{
             flag = false;
             System.out.print("Enter Departure Airport: ");
-            String departureLocationEnter = In.nextLine();
+            departureLocationEnter = In.nextLine();
 
             // User Search for Arrival Airport
             System.out.print("Enter Arrival Airport: ");
-            String arrivalLocationEnter = In.nextLine();
+             arrivalLocationEnter = In.nextLine();
 
 
             // Search by Departure airport and arrival airport in the Arraylist
@@ -55,6 +57,7 @@ public class User {
                     "   " + flight.calcDuration()/60+" hours and  "+flight.calcDuration()%60+" minutes   | " + finalDate);
             //  `(*>﹏<*)′
         }
+        selectFlight(departureLocationEnter , arrivalLocationEnter  );
     }
 
     public LocalDate Day() {
@@ -113,7 +116,7 @@ public class User {
     static final String flightnumenter=null;
 
 
-    public void selectflight() {
+    public void selectFlight(String departureLocationEnter , String arrivalLocationEnter ) {
         List<FlightDetails> data = ArrayListData.flightDetails();
         Booking booking = new Booking();
         FlightDetails flightInfo = new FlightDetails();
@@ -125,7 +128,7 @@ public class User {
             System.out.print("Choose Flight number: ");
             String flightnumenter = In.nextLine();
             for (FlightDetails f : data){
-                if (f.flightNum.equals(flightnumenter)){
+                if (f.flightNum.equals(flightnumenter) && f.departureLocation.equals(departureLocationEnter) && f.arrivalLocation.equals(arrivalLocationEnter)){
                     flightInfo = f;
                     booking.addOneFlight(flightInfo);
                     c = true;
@@ -181,11 +184,12 @@ public class User {
             }
             else
                 System.out.println("Error !!, Try Again");
-        }
-                flightInfo.displayFlightInfo();
+        }//the first dispaly wasn't important for the program
+               /* flightInfo.displayFlightInfo();
                 System.out.println(
                         "Additional Services : " + adservice  +"\n"+
-                        "-------------------------------------------");
+                        "-------------------------------------------");*/
+        System.out.println("_________________________________________________________________________________________");
 
 
 
@@ -262,6 +266,7 @@ public class User {
                         String S = p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.get(i);
                         if (formattedNumber.equals(S)) {
                             p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.remove(i);
+
                             break;
 
                         }
@@ -296,4 +301,5 @@ public class User {
         }
         p.bookings.remove(choice);
     }
+
 }

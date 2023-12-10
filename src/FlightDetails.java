@@ -115,12 +115,12 @@ public class FlightDetails {
     }
 
     public void displayFlightInfo(){
-        System.out.println("Flight number : "+flightNum  + "\n" +
+        System.out.println("Flight Number : "+flightNum  + "\n" +
                 "Departure Airport : " + departureLocation + "\n" +
                 "Arrival Airport : " + arrivalLocation +"\n" +
-                "Departure time : " + departure_time + "\n" +
-                "Arrival time : " + arrival_time + "\n" +
-                "Flight price : " + getPrice()+" pounds\n" +
+                "Departure Time : " + departure_time + "\n" +
+                "Arrival Time : " + arrival_time + "\n" +
+                "Flight Price : " + getPrice()+" pounds\n" +
                 "Duration of the flight about: "+ calcDuration()/60+" hours and "+ calcDuration()%60+" minutes");
     }
 }

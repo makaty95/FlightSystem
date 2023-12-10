@@ -102,7 +102,7 @@ public class Passenger {
             Scanner sc = new Scanner(System.in);
             this.PassengerEmail = sc.nextLine();
             if (this.PassengerEmail.contains("@") &&
-                    this.PassengerEmail.contains(".com") && this.PassengerEmail.length() > 10 )
+                    this.PassengerEmail.contains(".com")&& this.PassengerEmail.length()>10)
             {
                 valid = true;
             }
@@ -154,7 +154,7 @@ public class Passenger {
         addPassengerInfo();
         showPassengerInfo();
     }
-    public void addFlight (Booking booking){
+    public void addFlight (Booking booking) {
         bookings.add(booking);
     }
     public void getTotalBookings(){
@@ -164,6 +164,7 @@ public class Passenger {
             System.out.println("Reservation [" + count + "]");
             System.out.println("================");
             bookings.get(i).getReservations();
+
         }
     }
     public int getNumBookings(){
@@ -172,4 +173,5 @@ public class Passenger {
     public void getLastBooking(){
         bookings.get(bookings.size()-1).getReservations();
     }
+
 }
