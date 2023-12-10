@@ -102,7 +102,7 @@ public class Passenger {
             Scanner sc = new Scanner(System.in);
             this.PassengerEmail = sc.nextLine();
             if (this.PassengerEmail.contains("@") &&
-                    this.PassengerEmail.contains(".com"))
+                    this.PassengerEmail.contains(".com") && this.PassengerEmail.length() > 10 )
             {
                 valid = true;
             }

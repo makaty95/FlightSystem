@@ -70,14 +70,14 @@ public class Payment {
     public int calcPaymentAmount(int price , String sClass , String services){
         int taxes = price , temp = price,fees=600;
         if (sClass.equals("FirstClass")){
-            price = price + (int) (taxes * 0.3);
+            price = price + (int) (taxes * 0.03);
 
         }
         else if (sClass.equals("Business")){
-            price = price + (int) (taxes * 0.2);
+            price = price + (int) (taxes * 0.02);
         }
         else if (sClass.equals("economic")){
-            price = price + (int) (taxes * 0.1);
+            price = price + (int) (taxes * 0.01);
         }
         taxes = temp;
         if (services.equals("Wifi")){
