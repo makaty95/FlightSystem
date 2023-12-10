@@ -158,14 +158,22 @@ public class Passenger {
         bookings.add(booking);
     }
     public void getTotalBookings(){
-        for (int i = 0; i < bookings.size(); i++){
-            int count = i + 1;
-            System.out.println("================");
-            System.out.println("Reservation [" + count + "]");
-            System.out.println("================");
-            bookings.get(i).getReservations();
-
+        if (getNumBookings() == 0){
+            System.out.println("==================");
+            System.out.println("No Reservations!!");
+            System.out.println("==================");
         }
+        else {
+            for (int i = 0; i < bookings.size(); i++){
+                int count = i + 1;
+                System.out.println("================");
+                System.out.println("Reservation [" + count + "]");
+                System.out.println("================");
+                bookings.get(i).getReservations();
+
+            }
+        }
+
     }
     public int getNumBookings(){
         return bookings.size();
