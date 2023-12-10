@@ -246,8 +246,13 @@ public class User {
         Price = Price + Integer.parseInt(booking.flightInfo.price);
         Price = pay.calcPaymentAmount(Price , sClass , services);
         booking.flightInfo.setPrice(String.valueOf(Price)) ;
-        return pay.paymentStatus;
+        //***********************************************************************************
+        if(pay.paymentStatus == false){
+            cancelSeat();
+        }
+        //***********************************************************************************
 
+        return pay.paymentStatus;
     }
     void cancelFlight() {
         System.out.print("Please enter the reservation number you want to cancel: ");
@@ -279,7 +284,6 @@ public class User {
                         if (formattedNumber.equals(S)) {
                             p.bookings.get(choice).flightInfo.NonValidSeatsBusiness.remove(i);
                             break;
-
                         }
                     }
                     break;
@@ -301,5 +305,18 @@ public class User {
         }
         p.bookings.remove(choice);
     }
-
+    void cancelSeat() {
+        int index = p.bookings.size() - 1;
+        String seatClass = p.bookings.get(index).seatForBooking.getSeatClass();
+        if (seatClass == "Economy") {
+            int i = p.bookings.get(index).flightInfo.NonValidSeatsEconomic.size() - 1;
+            p.bookings.get(index).flightInfo.NonValidSeatsEconomic.remove(i);
+        } else if (seatClass == "Business") {
+            int i = p.bookings.get(index).flightInfo.NonValidSeatsBusiness.size() - 1;
+            p.bookings.get(index).flightInfo.NonValidSeatsBusiness.remove(i);
+        } else {
+            int i = p.bookings.get(index).flightInfo.NonValidSeatsFirstClass.size() - 1;
+            p.bookings.get(index).flightInfo.NonValidSeatsFirstClass.remove(i);
+        }
+    }
 }
