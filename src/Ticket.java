@@ -7,6 +7,8 @@ public class Ticket {
     private int ticketNumber;
     private String ticketFare;
 
+    private String seatClass;
+    private int seatNum;
     public int getTicketNumber() {
         return ticketNumber;
     }
@@ -20,6 +22,13 @@ public class Ticket {
        // System.out.println("Ticket Number: " + this.ticketNumber);
     }
 
+    public void setSeatClass(String seatClass) {
+        this.seatClass = seatClass;
+    }
+
+    public void setSeatNum(int seatNum) {
+        this.seatNum = seatNum;
+    }
 
     public String getTicketFare() {
         return ticketFare;
@@ -75,15 +84,13 @@ public class Ticket {
             System.out.println("Ticket State : " + GREEN + "Confirmed" + RESET);
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate today = LocalDate.now();
-
             LocalDate finalDate = null;
-
             LocalDate After30day = today.plusDays(30);
             System.out.print( "Expire Date: ");
             System.out.println(dtf.format(After30day));
-
-
-        System.out.println("Ticket Fare : "+this.getTicketFare());
+            System.out.println("Ticket Fare : "+this.getTicketFare());
+            System.out.println("Seat Class : " + this.seatClass);
+            System.out.println("Seat Num : " + this.seatNum);
         System.out.println("################################################################################");
     }
 }
