@@ -1,6 +1,6 @@
 public class Booking {
     public Seat seatForBooking;
-    Ticket ticket= new Ticket();
+    Ticket ticket=new Ticket();
     public String serv;
     int bookingID = 1000;
     boolean bookingStatus;
@@ -51,7 +51,5 @@ public class Booking {
         ticket.setTicketFare(flightInfo.price);
         ticket.setTicketStatus(bookingStatus);
         ticket.setTicketNumber();
-        ticket.setSeatClass(seatForBooking.getSeatClass());
-        ticket.setSeatNum(seatForBooking.getSeat_Num());
     }
 }

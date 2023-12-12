@@ -1,6 +1,6 @@
 public  class Seat {
     private int seatNum;
-    private String SeatClass;
+    public String SeatClass;
 
     public Seat(){
 

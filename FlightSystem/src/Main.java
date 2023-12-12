@@ -3,20 +3,30 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        DataClass.fetchData();
-        /*******************************************/
-        // Test
-        // DataClass.newFlightsByAdmin();
-        /*******************************************/
+
+        FlightDetails[] f = new FlightDetails[5];
+        f[0] = new FlightDetails("101", "Cairo", "Qena", "01:06", "02:10" ,"9000");
+        f[1] = new FlightDetails("102", "Cairo", "America", "05:30", "10:30", "26000");
+        f[2] = new FlightDetails("103", "Cairo", "Qena", "01:10", "03:30", "25000");
+        f[3] = new FlightDetails("104", "Cairo", "Alex", "01:00", "07:05", "15000");
+        f[4] = new FlightDetails("105", "Cairo", "Qena", "01:07", "07:05","10000");
+
         User user = new User();
+
+
+        ArrayListData a = new ArrayListData();
+
+        for(int i = 0 ; i < f.length; i ++ ) {
+            a.addflightdetails(f[i]);
+        }
+
         Scanner in = new Scanner(System.in);
         System.out.println("=====================");
         System.out.println("Reserve Flight Now !!");
         System.out.println("=====================");
         user.enterData();
         boolean check = true;
-        user.searchFlight(DataClass.flights);
-
+        user.searchFlight();
 
         while(check)
         {
@@ -27,7 +37,7 @@ public class Main {
             while (true){
                 int choice = in.nextInt();
                 if (choice == 1) {
-                    user.searchFlight(DataClass.flights);
+                    user.searchFlight();
                     break;
                 }
                 if (choice == 2){

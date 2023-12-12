@@ -16,8 +16,6 @@ public class FlightDetails {
     ArrayList<String> NonValidSeatsFirstClass = new ArrayList <String>();
 
 
-    AirPort dpartureAirport;
-    AirPort arrivalAirport;
     public String getDeparture_time() {
         return departure_time;
     }
@@ -34,7 +32,8 @@ public class FlightDetails {
         this.arrival_time = arrival_time;
     }
 
-
+    public String departureLocation;
+    public String arrivalLocation;
 
     public String getPrice() {
         return price;
@@ -74,35 +73,51 @@ public class FlightDetails {
         n+=(b*60);
         return c-n;
     }
-    public FlightDetails(String flightNum, String departureLocation, String arrivalLocation, String departure_time, String arrival_time,String price , String airportNameDep , String airportNameArr)
+    public FlightDetails(String flightNum, String departureLocation, String arrivalLocation, String departure_time, String arrival_time,String price)
     {
         this.flightNum = flightNum;
         this.price=price;
-
+        this.departureLocation = departureLocation;
+        this.arrivalLocation = arrivalLocation;
         this.departure_time = departure_time;
         this.arrival_time = arrival_time;
-        dpartureAirport = new AirPort(departureLocation , airportNameDep);
-        arrivalAirport = new AirPort(arrivalLocation , airportNameArr);
+        ///////////////////////////////////
+        //========================
+        // ONLY TO TEST BY ASHRAF
+        //========================
+        NonValidSeatsBusiness.add("01");
+        NonValidSeatsBusiness.add("02");
+        NonValidSeatsBusiness.add("03");
+        NonValidSeatsBusiness.add("04");
+        NonValidSeatsBusiness.add("10");
+        ///////////////////////////////////
 
     }
-    public FlightDetails(){
-        arrivalAirport = new AirPort();
-        dpartureAirport = new AirPort();
-    }
-
     public String getFlightNum() {
         return flightNum;
+    }
+    public FlightDetails() {
     }
     public void setFlightNum(String flightNum) {
         this.flightNum = flightNum;
     }
+    public String getDepartureLocation() {
+        return departureLocation;
+    }
+    public void setDepartureLocation(String departureLocation) {
+        this.departureLocation = departureLocation;
+    }
+    public String getArrivalLocation() {
+        return arrivalLocation;
+    }
+    public void setArrivalLocation(String arrivalLocation) {
+        this.arrivalLocation = arrivalLocation;
+    }
 
     public void displayFlightInfo(){
         System.out.println("Flight Number : "+flightNum  + "\n" +
-                "Departure Airport : " +  dpartureAirport.getAirportLocation() + "\n" +
-                "Arrival Airport : " + arrivalAirport.getAirportLocation()  + "\n" +
-                "Departure Airport Name : " + dpartureAirport.getAirportName()  + "\n" +
-                "Arrival Airport Name : " + arrivalAirport.getAirportName()  + "\n" +
+                "Departure Airport : " + departureLocation + "\n" +
+                "Arrival Airport : " + arrivalLocation +"\n" +
                 "Departure Time : " + departure_time + "\n" +
                 "Arrival Time : " + arrival_time + "\n" +
                 "Flight Price : " + getPrice()+" pounds\n" +

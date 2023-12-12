@@ -7,12 +7,14 @@ import java.util.Scanner;
 
 public class User {
 
+    ArrayListData a = new ArrayListData();
     Passenger p = new Passenger();
 
-    public void searchFlight(ArrayList<FlightDetails> data) {
+    public void searchFlight() {
 
         Scanner In = new Scanner(System.in);
         // User Search for Departure Airport
+        List<FlightDetails> data = ArrayListData.flightDetails();
         List<FlightDetails> matchingFlights = new ArrayList<>();
         String departureLocationEnter;
         String arrivalLocationEnter;
@@ -31,7 +33,7 @@ public class User {
 
             // Search by Departure airport and arrival airport in the Arraylist
             for (FlightDetails search : data) {
-                if (search.dpartureAirport.getAirportLocation().equals(departureLocationEnter) && search.arrivalAirport.getAirportLocation().equals(arrivalLocationEnter)) {
+                if (search.departureLocation.equals(departureLocationEnter) && search.arrivalLocation.equals(arrivalLocationEnter)) {
                     matchingFlights.add(search);
                 }
             }
@@ -50,12 +52,12 @@ public class User {
         // Display the sorted result
         for (FlightDetails flight : matchingFlights) {
             System.out.println("      " + flight.flightNum + "       | " + "      " +
-                    flight.dpartureAirport.getAirportLocation() + "        | " + "      " + flight.arrivalAirport.getAirportLocation() + "       | " +
+                    flight.departureLocation + "        | " + "      " + flight.arrivalLocation + "       | " +
                     "      " + flight.departure_time + "    | " + "    " + flight.arrival_time + "    | " +
                     "   " + flight.calcDuration()/60+" hours and  "+flight.calcDuration()%60+" minutes   | " + finalDate);
             //  `(*>﹏<*)′
         }
-        selectFlight(data , departureLocationEnter , arrivalLocationEnter  );
+        selectFlight(departureLocationEnter , arrivalLocationEnter  );
     }
 
     public LocalDate Day() {
@@ -114,7 +116,8 @@ public class User {
     static final String flightnumenter=null;
 
 
-    public void selectFlight(ArrayList <FlightDetails>  data, String departureLocationEnter , String arrivalLocationEnter ) {
+    public void selectFlight(String departureLocationEnter , String arrivalLocationEnter ) {
+        List<FlightDetails> data = ArrayListData.flightDetails();
         Booking booking = new Booking();
         FlightDetails flightInfo = new FlightDetails();
 
@@ -125,7 +128,7 @@ public class User {
             System.out.print("Choose Flight number: ");
             String flightnumenter = In.nextLine();
             for (FlightDetails f : data){
-                if (f.flightNum.equals(flightnumenter) && f.dpartureAirport.getAirportLocation().equals(departureLocationEnter) && f.arrivalAirport.getAirportLocation().equals(arrivalLocationEnter)){
+                if (f.flightNum.equals(flightnumenter) && f.departureLocation.equals(departureLocationEnter) && f.arrivalLocation.equals(arrivalLocationEnter)){
                     flightInfo = f;
                     booking.addOneFlight(flightInfo);
                     c = true;
@@ -188,6 +191,8 @@ public class User {
                         "-------------------------------------------");*/
         System.out.println("_________________________________________________________________________________________");
 
+
+
         booking.seatForBooking = userSeatSelection(booking.flightInfo.NonValidSeatsEconomic , booking.flightInfo.NonValidSeatsFirstClass  , booking.flightInfo.NonValidSeatsBusiness);
         p.addFlight(booking);
         booking.bookingStatus = userPayment(booking);
@@ -241,10 +246,11 @@ public class User {
         Price = Price + Integer.parseInt(booking.flightInfo.price);
         Price = pay.calcPaymentAmount(Price , sClass , services);
         booking.flightInfo.setPrice(String.valueOf(Price)) ;
+        //***********************************************************************************
         if(pay.paymentStatus == false){
             cancelSeat();
         }
-
+        //***********************************************************************************
 
         return pay.paymentStatus;
     }

@@ -2,18 +2,11 @@ public class AirPort {
     public int getAirportCode() {
         return airportCode;
     }
-
     public AirPort()
     {
-        this.airportName = "";
-        this.airportCode = 0;
-        this.airportLocation = "";
-    }
-
-    public AirPort(String airportName, String airportLocation) {
-        this.airportCode = airportCode;
-        this.airportName = airportName;
-        this.airportLocation = airportLocation;
+        this.airportName="";
+        this.airportCode=0;
+        this.airportLocation="";
     }
 
     public void setAirportCode(int airportCode) {
