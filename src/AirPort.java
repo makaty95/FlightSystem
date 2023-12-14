@@ -1,25 +1,22 @@
+import java.util.Scanner;
+
 public class AirPort {
-    public int getAirportCode() {
+    public String getAirportCode() {
         return airportCode;
     }
-    public AirPort()
-    {
-        this.airportName="";
-        this.airportCode=0;
-        this.airportLocation="";
+
+    Scanner In = new Scanner(System.in);
+
+    public AirPort() {
+        AirportName = "";
+        this.airportCode = "";
+        this.airportLocation = "";
     }
 
-    public void setAirportCode(int airportCode) {
+    public void setAirportCode(String airportCode) {
         this.airportCode = airportCode;
     }
 
-    public String getAirportName() {
-        return airportName;
-    }
-
-    public void setAirportName(String airportName) {
-        this.airportName = airportName;
-    }
 
     public String getAirportLocation() {
         return airportLocation;
@@ -29,7 +26,17 @@ public class AirPort {
         this.airportLocation = airportLocation;
     }
 
-    private int airportCode;
-    private String airportName;
+    private String airportCode;
+
+    public String getAirportName() {
+        return AirportName;
+    }
+
+    public void setAirportName(String airportName) {
+        AirportName = airportName;
+    }
+
+    private String AirportName;
+    //  private String departureAirportName = getDepartureAirportLocation();
     private String airportLocation;
 }

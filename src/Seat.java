@@ -1,11 +1,13 @@
-public  class Seat {
+public class Seat {
     private int seatNum;
     public String SeatClass;
 
-    public Seat(){
+    public Seat() {
 
     }
+
     private boolean isAvilable;
+
     public Seat(int seatNum, String seatClass) {
         this.seatNum = seatNum;
         this.SeatClass = seatClass;
@@ -14,9 +16,11 @@ public  class Seat {
     public int getSeat_Num() {
         return seatNum;
     }
+
     public String getSeatClass() {
         return SeatClass;
     }
+
     public void setSeatClass(String seatClass) {
         this.SeatClass = SeatClass;
     }

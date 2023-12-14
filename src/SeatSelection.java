@@ -9,7 +9,8 @@ public abstract class SeatSelection {
     int seatNumber;
     Scanner input = new Scanner(System.in);
     Seat[][] seats;
-    public SeatSelection(int _height, int _width){
+
+    public SeatSelection(int _height, int _width) {
         height = _height;
         width = _width;
         seats = new Seat[height][width];
@@ -22,13 +23,13 @@ public abstract class SeatSelection {
         }
     }
 
-    boolean valid(int i, int j){ /// trivial
-        return (i<height && j<width);
+    boolean valid(int i, int j) { /// trivial
+        return (i < height && j < width);
     }
 
-    public Seat bookSeat(){
+    public Seat bookSeat() {
         boolean check = true;
-        int a , b;
+        int a, b;
         System.out.println("\nPlease select a seat number :");
         do {
             check = true;
@@ -37,7 +38,7 @@ public abstract class SeatSelection {
 
             a = (int) Math.floor((double) (seatNumber - 1) / width);
             b = (seatNumber - 1) % width;
-            if(!valid(a, b)){
+            if (!valid(a, b)) {
                 System.out.println("choose a valid range number: ");
                 check = false;
                 continue;
@@ -50,20 +51,19 @@ public abstract class SeatSelection {
                 check = false;
             }
 
-        }while(!check);
+        } while (!check);
 
         System.out.println("You have booked your seat! with number : " + seatNumber);
-        Seat seatForBooking = new Seat(seatNumber , seatsClass);
+        Seat seatForBooking = new Seat(seatNumber, seatsClass);
         return seatForBooking;
     }
 
 
-
-    public static int selectClass(EconomicSeats economic, BusinessSeats business, FirstClassSeats firstClass , ArrayList<String> NSE , ArrayList<String> NSF, ArrayList<String> NSB ) {
+    public static int selectClass(EconomicSeats economic, BusinessSeats business, FirstClassSeats firstClass, ArrayList<String> NSE, ArrayList<String> NSF, ArrayList<String> NSB) {
         System.out.println("Please enter seat class\n1 -> Economic\n2 -> Business\n3 -> First Class");
         Scanner input = new Scanner(System.in);
-        int choice = 0 ;
-        while (true){
+        int choice = 0;
+        while (true) {
             choice = input.nextInt();
             if (choice == 1) {
                 economic.drawSeats(NSE);
@@ -76,8 +76,7 @@ public abstract class SeatSelection {
                 firstClass.drawSeats(NSF);
                 return choice;
 
-            }
-            else {
+            } else {
                 System.out.println("Error !!, Try Again");
             }
         }
@@ -88,7 +87,7 @@ public abstract class SeatSelection {
 
         System.out.println("Aircraft Seat Display:");
         for (int i = 0; i < width; i++) {
-            System.out.print("=[]==");
+            System.out.print("==[]=");
 
         }
         System.out.println("=");
@@ -96,23 +95,23 @@ public abstract class SeatSelection {
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                    System.out.print("| ");
-                    String formattedNumber = String.format("%02d", seats[i][j].getSeat_Num());
-                    boolean check = true;
-                    for (String S: NS){
-                        if (formattedNumber.equals(S)){
-                            check = false;
-                            break;
-                        }
+                System.out.print("| ");
+                String formattedNumber = String.format("%02d", seats[i][j].getSeat_Num());
+                boolean check = true;
+                for (String S : NS) {
+                    if (formattedNumber.equals(S)) {
+                        check = false;
+                        break;
                     }
-                    if (check) {
-                        System.out.print(formattedNumber + " ");
-                    } else {
-                        seats[i][j].setAvilable(false);
-                        String RED = "\u001B[31m";
-                        String RESET = "\u001B[0m";
-                        System.out.print(RED +  "X  " + RESET); // Occupied seat
-                    }
+                }
+                if (check) {
+                    System.out.print(formattedNumber + " ");
+                } else {
+                    seats[i][j].setAvilable(false);
+                    String RED = "\u001B[31m";
+                    String RESET = "\u001B[0m";
+                    System.out.print(RED + "X  " + RESET); // Occupied seat
+                }
 
             }
             System.out.print("|\n");
@@ -131,7 +130,7 @@ public abstract class SeatSelection {
 
         }
         for (int i = 0; i < width; i++) {
-            System.out.print("=====");
+            System.out.print("==[]=");
         }
         System.out.println("=\n");
 
@@ -139,10 +138,11 @@ public abstract class SeatSelection {
 
 
 }
+
 class EconomicSeats extends SeatSelection {
 
     public EconomicSeats(int capacity, String _seatsClass) {
-        super(4, capacity/4);
+        super(4, capacity / 4);
         this.capacity = capacity;
         this.seatsClass = _seatsClass;
     }
@@ -152,7 +152,7 @@ class EconomicSeats extends SeatSelection {
 class BusinessSeats extends SeatSelection {
 
     public BusinessSeats(int capacity, String _seatsClass) {
-        super(4, capacity/4);
+        super(4, capacity / 4);
         this.capacity = capacity;
         this.seatsClass = _seatsClass;
     }
@@ -163,7 +163,7 @@ class BusinessSeats extends SeatSelection {
 class FirstClassSeats extends SeatSelection {
 
     public FirstClassSeats(int capacity, String _seatsClass) {
-        super(4, capacity/4);
+        super(4, capacity / 4);
         this.capacity = capacity;
         this.seatsClass = _seatsClass;
     }
