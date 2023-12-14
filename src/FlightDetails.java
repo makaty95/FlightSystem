@@ -11,11 +11,11 @@ public class FlightDetails {
     public String flightNum;
 
     ArrayList<String> NonValidSeatsBusiness = new ArrayList <String>();
-
     ArrayList<String> NonValidSeatsEconomic = new ArrayList <String>() ;
     ArrayList<String> NonValidSeatsFirstClass = new ArrayList <String>();
 
-
+     AirPort arrivalAirport=new AirPort();
+    AirPort departureAirport=new AirPort();
     public String getDeparture_time() {
         return departure_time;
     }
@@ -31,9 +31,6 @@ public class FlightDetails {
     public void setArrival_time(String arrival_time) {
         this.arrival_time = arrival_time;
     }
-
-    public String departureLocation;
-    public String arrivalLocation;
 
     public String getPrice() {
         return price;
@@ -73,12 +70,10 @@ public class FlightDetails {
         n+=(b*60);
         return c-n;
     }
-    public FlightDetails(String flightNum, String departureLocation, String arrivalLocation, String departure_time, String arrival_time,String price)
-    {
+    public FlightDetails(String flightNum, String departureLocation, String arrivalLocation, String departureAirportName, String arrivalAirportName, String departureAirportCode, String arrivalAirportCode, String departure_time, String arrival_time,String price)
+    {//,String aipordeparturetname,String aipordeparturetcode,String aipordeparturetLocation,
         this.flightNum = flightNum;
         this.price=price;
-        this.departureLocation = departureLocation;
-        this.arrivalLocation = arrivalLocation;
         this.departure_time = departure_time;
         this.arrival_time = arrival_time;
         ///////////////////////////////////
@@ -91,7 +86,12 @@ public class FlightDetails {
         NonValidSeatsBusiness.add("04");
         NonValidSeatsBusiness.add("10");
         ///////////////////////////////////
-
+        this.departureAirport.setAirportLocation(departureLocation);
+        this.departureAirport.setAirportName(departureAirportName);
+        this.departureAirport.setAirportCode(departureAirportCode);
+        this.arrivalAirport.setAirportLocation(arrivalLocation);
+        this.arrivalAirport.setAirportName(arrivalAirportName);
+        this.arrivalAirport.setAirportCode(arrivalAirportCode);
     }
     public String getFlightNum() {
         return flightNum;
@@ -102,22 +102,22 @@ public class FlightDetails {
         this.flightNum = flightNum;
     }
     public String getDepartureLocation() {
-        return departureLocation;
+        return departureAirport.getAirportLocation();
     }
     public void setDepartureLocation(String departureLocation) {
-        this.departureLocation = departureLocation;
+        this.departureAirport.setAirportLocation(departureLocation);
     }
     public String getArrivalLocation() {
-        return arrivalLocation;
+        return arrivalAirport.getAirportLocation();
     }
     public void setArrivalLocation(String arrivalLocation) {
-        this.arrivalLocation = arrivalLocation;
+        this.arrivalAirport.setAirportLocation(arrivalLocation);
     }
 
     public void displayFlightInfo(){
         System.out.println("Flight Number : "+flightNum  + "\n" +
-                "Departure Airport : " + departureLocation + "\n" +
-                "Arrival Airport : " + arrivalLocation +"\n" +
+                "Departure Airport : " + departureAirport.getAirportLocation() + "\n" +
+                "Arrival Airport : " + arrivalAirport.getAirportLocation() +"\n" +
                 "Departure Time : " + departure_time + "\n" +
                 "Arrival Time : " + arrival_time + "\n" +
                 "Flight Price : " + getPrice()+" pounds\n" +

@@ -7,6 +7,27 @@ public class Ticket {
     private int ticketNumber;
     private String ticketFare;
 
+    private String departureAirportName;
+    private String arrivalAirportName;
+    private String seatClass;
+    private int seatNum;
+
+    public void setDepartureAirportName(String departureAirportName) {
+        this.departureAirportName = departureAirportName;
+    }
+
+    public void setArrivalAirportName(String arrivalAirportName) {
+        this.arrivalAirportName = arrivalAirportName;
+    }
+
+    public void setSeatClass(String seatClass) {
+        this.seatClass = seatClass;
+    }
+
+    public void setSeatNum(int seatNum) {
+        this.seatNum = seatNum;
+    }
+
     public int getTicketNumber() {
         return ticketNumber;
     }
@@ -84,6 +105,11 @@ public class Ticket {
 
 
         System.out.println("Ticket Fare : "+this.getTicketFare());
+
+        System.out.println("Departure Airport Name : " + departureAirportName);
+        System.out.println("Arrival Airport Name : " + arrivalAirportName);
+        System.out.println("Seat Class : " + seatClass );
+        System.out.println("Seat Num : " + seatNum );
         System.out.println("################################################################################");
     }
 }

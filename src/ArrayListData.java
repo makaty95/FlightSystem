@@ -19,7 +19,7 @@ public class ArrayListData
         for (FlightDetails details : Listdata){
 
             System.out.println("      " + details.flightNum + "       | " + "      " +
-                    details.departureLocation + "        | " + "      " + details.arrivalLocation + "       | " +
+                    details.departureAirport.getAirportLocation() + "        | " + "      " + details.arrivalAirport.getAirportLocation() + "       | " +
                     "      " + details.departure_time + "    | " + "    " + details.arrival_time + "    | " + "   " );
         }
     }

@@ -11,7 +11,6 @@ public class User {
     Passenger p = new Passenger();
 
     public void searchFlight() {
-
         Scanner In = new Scanner(System.in);
         // User Search for Departure Airport
         List<FlightDetails> data = ArrayListData.flightDetails();
@@ -28,12 +27,12 @@ public class User {
 
             // User Search for Arrival Airport
             System.out.print("Enter Arrival Airport: ");
-             arrivalLocationEnter = In.nextLine();
+            arrivalLocationEnter = In.nextLine();
 
 
             // Search by Departure airport and arrival airport in the Arraylist
             for (FlightDetails search : data) {
-                if (search.departureLocation.equals(departureLocationEnter) && search.arrivalLocation.equals(arrivalLocationEnter)) {
+                if (search.departureAirport.getAirportLocation().equals(departureLocationEnter) && search.arrivalAirport.getAirportLocation().equals(arrivalLocationEnter)) {
                     matchingFlights.add(search);
                 }
             }
@@ -52,7 +51,7 @@ public class User {
         // Display the sorted result
         for (FlightDetails flight : matchingFlights) {
             System.out.println("      " + flight.flightNum + "       | " + "      " +
-                    flight.departureLocation + "        | " + "      " + flight.arrivalLocation + "       | " +
+                    flight.departureAirport.getAirportLocation() + "        | " + "      " + flight.arrivalAirport.getAirportLocation() + "       | " +
                     "      " + flight.departure_time + "    | " + "    " + flight.arrival_time + "    | " +
                     "   " + flight.calcDuration()/60+" hours and  "+flight.calcDuration()%60+" minutes   | " + finalDate);
             //  `(*>﹏<*)′
@@ -128,7 +127,7 @@ public class User {
             System.out.print("Choose Flight number: ");
             String flightnumenter = In.nextLine();
             for (FlightDetails f : data){
-                if (f.flightNum.equals(flightnumenter) && f.departureLocation.equals(departureLocationEnter) && f.arrivalLocation.equals(arrivalLocationEnter)){
+                if (f.flightNum.equals(flightnumenter) && f.departureAirport.getAirportLocation().equals(departureLocationEnter) && f.arrivalAirport.getAirportLocation().equals(arrivalLocationEnter)){
                     flightInfo = f;
                     booking.addOneFlight(flightInfo);
                     c = true;
@@ -316,7 +315,6 @@ public class User {
             p.bookings.get(index).flightInfo.NonValidSeatsBusiness.remove(i);
         } else {
             int i = p.bookings.get(index).flightInfo.NonValidSeatsFirstClass.size() - 1;
-            p.bookings.get(index).flightInfo.NonValidSeatsFirstClass.remove(i);
-        }
-    }
+            p.bookings.get(index).flightInfo.NonValidSeatsFirstClass.remove(i);}
+}
 }

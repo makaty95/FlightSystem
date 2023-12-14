@@ -50,6 +50,10 @@ public class Booking {
     {
         ticket.setTicketFare(flightInfo.price);
         ticket.setTicketStatus(bookingStatus);
+        ticket.setSeatClass(seatForBooking.getSeatClass());
+        ticket.setSeatNum(seatForBooking.getSeat_Num());
+        ticket.setDepartureAirportName(flightInfo.departureAirport.getAirportName());
+        ticket.setArrivalAirportName(flightInfo.arrivalAirport.getAirportName());
         ticket.setTicketNumber();
     }
 }
