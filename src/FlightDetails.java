@@ -45,6 +45,7 @@ public class FlightDetails {
     public String departure_time, arrival_time;
 
     //not a clean code don't touch it please
+
     int calcDuration() {
         char s = getArrival_time().charAt(0);
         char d = getArrival_time().charAt(1);
@@ -70,6 +71,7 @@ public class FlightDetails {
         n += (b * 60);
         return c - n;
     }
+
 
     public FlightDetails(String flightNum, String departureLocation, String arrivalLocation, String departureAirportName, String arrivalAirportName, String departureAirportCode, String arrivalAirportCode, String departure_time, String arrival_time, String price) {//,String aipordeparturetname,String aipordeparturetcode,String aipordeparturetLocation,
         this.flightNum = flightNum;

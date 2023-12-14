@@ -1,9 +1,8 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner in = new Scanner(System.in);
-
 
         FlightDetails[] f = new FlightDetails[5];
         f[0] = new FlightDetails("101", "Cairo", "Qena", "Cairo International Airport", "Luxor (LXR) Airport", "AAA101", "CCC103", "01:06", "02:10", "9000");
@@ -17,25 +16,25 @@ public class Main {
         for (int i = 0; i < f.length; i++) {
             a.addflightdetails(f[i]);
         }
+
         Admin admins = new Admin();
-        int choose;
-
-
         System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t✈✈✈✈  Welcome to FCIS Flight Reservation System  ✈✈✈✈");
         System.out.print("\t\t\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------\n");
         System.out.print("1 -> To login as Admin\n2 -> To login as Passenger\n3 -> Exit\n");
         boolean loopCheck = true;
         do {
-            choose = in.nextInt();
+            int choose = 9;
+            try{
+                choose = in.nextInt();
+            }catch(Exception ex){
 
-            try {
-                Thread.sleep(1500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                System.out.println("Invalid Input! , " + " Exception: " + ex);
+                return;
             }
+            Thread.sleep(1500);
+
             if (choose == 1) {
                 int checks = 0;
-
                 do {
                     System.out.print("Please enter Admin's password: ");
 
@@ -119,7 +118,7 @@ public class Main {
                 System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t✈✈✈✈  Thank you for using our application  ✈✈✈✈");
                 System.out.print("\t\t\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------\n");
                 System.exit(0);
-            } else if (choose != 1 && choose != 2 && choose != 3) {
+            } else {
                 loopCheck = false;
                 System.out.println("Wrong answer ..... Please enter only 1, 2 OR 3");
             }
@@ -133,10 +132,10 @@ public class Main {
             final String os = System.getProperty("os.name");
 
             if (os.contains("Windows")) {
-                // For Windows
+
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } else {
-                // For Linux and macOS (and some Windows terminals)
+
                 System.out.print("\u001b[2J\u001b[H");
                 System.out.flush();
             }

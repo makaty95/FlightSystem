@@ -148,7 +148,12 @@ public class Passenger {
                 System.out.println("================");
                 System.out.println("Reservation [" + count + "]");
                 System.out.println("================");
-                bookings.get(i).getReservations();
+                try{
+                    bookings.get(i).getReservations();
+                }catch(ArrayIndexOutOfBoundsException ex){
+                    System.out.println("Exception : " + ex);
+                    System.exit(1);
+                }
 
             }
         }

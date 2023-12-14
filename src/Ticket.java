@@ -37,7 +37,11 @@ public class Ticket {
         for (int i = 0; i < 6; i++) {
             d += (int) (Math.random() * 10);
         }
-        this.ticketNumber = Integer.parseInt(d);
+        try {
+            this.ticketNumber = Integer.parseInt(d);
+        }catch(NumberFormatException ex){
+            System.out.println("Error converting ticket number to integer EXPTION: " + ex);
+        }
         // System.out.println("Ticket Number: " + this.ticketNumber);
     }
 

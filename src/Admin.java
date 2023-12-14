@@ -11,11 +11,12 @@ public class Admin {
     final String password = "Admin_123456";
     ArrayList<FlightDetails> flightDetailsArrayList = new ArrayList<>();
     FlightDetails flight = new FlightDetails();
-    private java.lang.String[] Point;
+    private String[] Point;
 
     public void addFlight() {
         System.out.print("Enter the flight details");
         System.out.println("=========================\n");
+
         System.out.print("Enter flight departure location: ");
         Scanner scanner = new Scanner(System.in);
         String airportDeparture = scanner.nextLine();
@@ -60,20 +61,24 @@ public class Admin {
     }
 
     public void showAllFlights() {
-        for (int i = 0; i < flightDetailsArrayList.size(); i++) {
-            System.out.println("flight number [ " + i + 1 + " ]");
-            System.out.println("the departure location : " + flightDetailsArrayList.get(i).getDepartureLocation() +
-                    "\nthe arrival location : " + flightDetailsArrayList.get(i).getArrivalLocation() +
-                    "\nthe price = " + flightDetailsArrayList.get(i).getPrice() +
-                    "\nthe departure time : " + flightDetailsArrayList.get(i).getDeparture_time() +
-                    "\nthe arrival time : " + flightDetailsArrayList.get(i).getArrival_time() +
-                    "\nthe departure  airport name : " + flightDetailsArrayList.get(i).departureAirport.getAirportName() +
-                    "\nthe departure  airport location : " + flightDetailsArrayList.get(i).departureAirport.getAirportLocation() +
-                    "\nthe departure airport code : " + flightDetailsArrayList.get(i).departureAirport.getAirportCode() +
-                    "\nthe arrival  airport name : " + flightDetailsArrayList.get(i).arrivalAirport.getAirportName() +
-                    "\nthe arrival  airport location : " + flightDetailsArrayList.get(i).arrivalAirport.getAirportLocation() +
-                    "\nthe arrival airport code : " + flightDetailsArrayList.get(i).arrivalAirport.getAirportCode());
-
+        int i = 1;
+        try{
+            for (FlightDetails flight : flightDetailsArrayList) {
+                System.out.println("flight number [ " + (i++) + " ]");
+                System.out.println("the departure location : " + flight.getDepartureLocation() +
+                        "\nthe arrival location : " + flight.getArrivalLocation() +
+                        "\nthe price = " + flight.getPrice() +
+                        "\nthe departure time : " + flight.getDeparture_time() +
+                        "\nthe arrival time : " + flight.getArrival_time() +
+                        "\nthe departure  airport name : " + flight.departureAirport.getAirportName() +
+                        "\nthe departure  airport location : " + flight.departureAirport.getAirportLocation() +
+                        "\nthe departure airport code : " + flight.departureAirport.getAirportCode() +
+                        "\nthe arrival  airport name : " + flight.arrivalAirport.getAirportName() +
+                        "\nthe arrival  airport location : " + flight.arrivalAirport.getAirportLocation() +
+                        "\nthe arrival airport code : " + flight.arrivalAirport.getAirportCode());
+            }
+        }catch(Exception e){
+            System.out.println("Exception with the 'flightDetailsArrayList' ArrayList in class Admin!");
         }
     }
 
@@ -89,7 +94,7 @@ public class Admin {
         }
     }
 
-    public void adminMenu(Admin admins) {
+    public void adminMenu(Admin admins) throws InterruptedException {
         int setCheck = 0;
         Scanner in = new Scanner(System.in);
         do {
@@ -135,7 +140,7 @@ public class Admin {
         } while (setCheck == 1);
     }
 
-    public void endMenu(Admin admins) {
+    public void endMenu(Admin admins) throws InterruptedException {
         System.out.println("--------------------------------------------------------------------------------------------\n");
         System.out.println("Press 1 -> If you want to continue as Admin\nPress 2 -> If you want to back to main menu");
         Scanner in = new Scanner(System.in);
@@ -146,7 +151,7 @@ public class Admin {
                 admins.adminMenu(admins);
             } else if (checkPoint == 2) {
                 Main.main(Point);
-            } else if (checkPoint != 1 && checkPoint != 2) {
+            } else {
                 System.out.println("Invalid choice");
                 admins.endMenu(admins);
             }

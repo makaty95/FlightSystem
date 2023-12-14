@@ -31,6 +31,8 @@ public class User {
 
 
             // Search by Departure airport and arrival airport in the Arraylist
+
+
             for (FlightDetails search : data) {
                 if (search.departureAirport.getAirportLocation().equals(departureLocationEnter) && search.arrivalAirport.getAirportLocation().equals(arrivalLocationEnter)) {
                     matchingFlights.add(search);
@@ -53,6 +55,7 @@ public class User {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
         Main.clearConsole();
 
         for (FlightDetails flight : matchingFlights) {
@@ -169,8 +172,13 @@ public class User {
         System.out.print("Enter the number corresponding to the additional service: ");
 
         while (true) {
-            int serviceChoice = In.nextInt();
-
+            int serviceChoice = 10;
+            try{
+                serviceChoice = In.nextInt();
+            }catch(Exception exception){
+                System.out.println("Invalid input!");
+                System.exit(101);
+            }
             if (serviceChoice == 1) {
                 adservice = "Wifi";
                 booking.serv = "Wifi";
@@ -189,6 +197,7 @@ public class User {
                 break;
             } else
                 System.out.println("Error !!, Try Again");
+
         }
         System.out.println("_________________________________________________________________________________________");
         booking.seatForBooking = userSeatSelection(booking.flightInfo.NonValidSeatsEconomic, booking.flightInfo.NonValidSeatsFirstClass, booking.flightInfo.NonValidSeatsBusiness);
@@ -308,7 +317,13 @@ public class User {
 
     void cancelSeat() {
         int index = p.bookings.size() - 1;
-        String seatClass = p.bookings.get(index).seatForBooking.getSeatClass();
+        String seatClass = "";
+        try{
+            seatClass = p.bookings.get(index).seatForBooking.getSeatClass();
+        }catch (ArrayIndexOutOfBoundsException ex){
+            System.out.println("Exception : " + ex + " in class User, function: cancelSeat!");
+            System.exit(1);
+        }
         if (seatClass == "Economy") {
             int i = p.bookings.get(index).flightInfo.NonValidSeatsEconomic.size() - 1;
             p.bookings.get(index).flightInfo.NonValidSeatsEconomic.remove(i);
