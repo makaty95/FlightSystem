@@ -1,32 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArrayListData
-{
+public class ArrayListData {
     // basic declaration of Arraylist
-    private static List<FlightDetails>  Listdata = new ArrayList<>();
+    private static final List<FlightDetails> Listdata = new ArrayList<>();
 
     public static List<FlightDetails> flightDetails() {
         return Listdata;
     }
 
 
-    public void addflightdetails(FlightDetails flight){
+    public void addflightdetails(FlightDetails flight) {
         Listdata.add(flight);
     }
 
-    public void ShowFlightDetails(){
-        for (FlightDetails details : Listdata){
+    public void ShowFlightDetails() {
+        for (FlightDetails details : Listdata) {
 
             System.out.println("      " + details.flightNum + "       | " + "      " +
                     details.departureAirport.getAirportLocation() + "        | " + "      " + details.arrivalAirport.getAirportLocation() + "       | " +
-                    "      " + details.departure_time + "    | " + "    " + details.arrival_time + "    | " + "   " );
+                    "      " + details.departure_time + "    | " + "    " + details.arrival_time + "    | " + "   ");
         }
     }
- /* public void ShowFlightDetails(){
-      for (FlightDetails details : Listdata){
 
-          System.out.println( "        " + "      " + details.departureLocation + "        | "+ "      " + details.arrivalLocation + "       | "  + details.FlightClass1 + "  |  " + details.FlightClass2);
-      }
-  }*/
 }

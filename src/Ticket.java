@@ -38,7 +38,7 @@ public class Ticket {
             d += (int) (Math.random() * 10);
         }
         this.ticketNumber = Integer.parseInt(d);
-       // System.out.println("Ticket Number: " + this.ticketNumber);
+        // System.out.println("Ticket Number: " + this.ticketNumber);
     }
 
 
@@ -60,8 +60,7 @@ public class Ticket {
 
     private boolean ticketStatus;
 
-    public void showData()
-    {
+    public void showData() {
         System.out.println("################################################################################");
         System.out.println("##                                     Ticket                                 ##");
         System.out.println("##          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠀⢠\n" +
@@ -84,32 +83,32 @@ public class Ticket {
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠉⠀⠀⠀⠀⠀⠀⢸⣿⣽⣿⡇⠀⣠⣤⡼⠛⠀⠈⠉⠉⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n\t\t\t" +
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⠛⠋⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n\t\t\t" +
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n\t\t\t"
-                +" ⠀                                                        ");
+                + " ⠀                                                        ");
         System.out.println("##                                                                            ##");
         System.out.println("##                                                                            ##");
         System.out.println("##                                                                            ##");
         System.out.println("##                                                                            ##");
 
-        System.out.println("Ticket Number : "+this.getTicketNumber());
-            String RESET = "\u001B[0m";
-            String GREEN = "\u001B[32m";
-            System.out.println("Ticket State : " + GREEN + "Confirmed" + RESET);
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate today = LocalDate.now();
+        System.out.println("Ticket Number : " + this.getTicketNumber());
+        String RESET = "\u001B[0m";
+        String GREEN = "\u001B[32m";
+        System.out.println("Ticket State : " + GREEN + "Confirmed" + RESET);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate today = LocalDate.now();
 
-            LocalDate finalDate = null;
+        LocalDate finalDate = null;
 
-            LocalDate After30day = today.plusDays(30);
-            System.out.print( "Expire Date: ");
-            System.out.println(dtf.format(After30day));
+        LocalDate After30day = today.plusDays(30);
+        System.out.print("Expire Date: ");
+        System.out.println(dtf.format(After30day));
 
 
-        System.out.println("Ticket Fare : "+this.getTicketFare());
+        System.out.println("Ticket Fare : " + this.getTicketFare());
 
         System.out.println("Departure Airport Name : " + departureAirportName);
         System.out.println("Arrival Airport Name : " + arrivalAirportName);
-        System.out.println("Seat Class : " + seatClass );
-        System.out.println("Seat Num : " + seatNum );
+        System.out.println("Seat Class : " + seatClass);
+        System.out.println("Seat Num : " + seatNum);
         System.out.println("################################################################################");
     }
 }

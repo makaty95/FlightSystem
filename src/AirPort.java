@@ -4,16 +4,17 @@ public class AirPort {
     public String getAirportCode() {
         return airportCode;
     }
+
     Scanner In = new Scanner(System.in);
-    public AirPort()
-    {
+
+    public AirPort() {
         AirportName = "";
-        this.airportCode="";
-        this.airportLocation="";
+        this.airportCode = "";
+        this.airportLocation = "";
     }
 
     public void setAirportCode(String airportCode) {
-        this.airportCode=airportCode;
+        this.airportCode = airportCode;
     }
 
 
@@ -22,7 +23,7 @@ public class AirPort {
     }
 
     public void setAirportLocation(String airportLocation) {
-        this.airportLocation=airportLocation;
+        this.airportLocation = airportLocation;
     }
 
     private String airportCode;
@@ -35,7 +36,7 @@ public class AirPort {
         AirportName = airportName;
     }
 
-    private String AirportName ;
-  //  private String departureAirportName = getDepartureAirportLocation();
+    private String AirportName;
+    //  private String departureAirportName = getDepartureAirportLocation();
     private String airportLocation;
 }

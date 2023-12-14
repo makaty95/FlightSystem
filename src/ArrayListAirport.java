@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class ArrayListAirport {
 
-    private ArrayList<AirPort> airportList;
+    private final ArrayList<AirPort> airportList;
 
     public ArrayListAirport() {
         airportList = new ArrayList<>();
@@ -25,7 +25,7 @@ public class ArrayListAirport {
         System.out.println("List of Airports:");
         for (AirPort airport : airportList) {
             System.out.println("Name: " + airport.getAirportName() +
-                    ", Code: " + airport.getAirportCode() );
+                    ", Code: " + airport.getAirportCode());
         }
     }
 
@@ -35,7 +35,7 @@ public class ArrayListAirport {
                 return airport.getAirportName();
             }
         }
-        return "Airport not found for code: " +code;}
-
+        return "Airport not found for code: " + code;
+    }
 
 }

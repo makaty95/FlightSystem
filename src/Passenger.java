@@ -9,62 +9,52 @@ public class Passenger {
     private String PassengerEmail;
     ArrayList<Booking> bookings = new ArrayList<>();
 
-    public Passenger()
-    { }
+    public Passenger() {
+    }
 
-    public void setPassengerID()
-    {
+    public void setPassengerID() {
         StringBuilder stringBuilder = new StringBuilder();
 
         // Generate the first 3 letters
-        for (int i = 0; i < 3; i++)
-        {
+        for (int i = 0; i < 3; i++) {
             char letter = (char) ('A' + Math.random() * ('Z' - 'A' + 1));
             stringBuilder.append(letter);
         }
 
         // Generate the next 6 digits
-        for (int i = 0; i < 6; i++)
-        {
+        for (int i = 0; i < 6; i++) {
             int digit = (int) (Math.random() * 10);
             stringBuilder.append(digit);
         }
         this.PassengerID = stringBuilder.toString();
     }
 
-    public void setPassengerName(String passengerFName, String passengerLName)
-    {
+    public void setPassengerName(String passengerFName, String passengerLName) {
         boolean valid = false;
-        while (!valid)
-        {
+        while (!valid) {
+            System.out.println("Please enter your information");
+            System.out.println("==============================\n");
             System.out.print("Enter your First name: ");
             Scanner sc = new Scanner(System.in);
             this.PassengerFirstName = sc.nextLine();
-            if (PassengerFirstName.matches("^[a-zA-Z]*$")&&this.PassengerFirstName.length()>0)
-            {
+            if (PassengerFirstName.matches("^[a-zA-Z]*$") && this.PassengerFirstName.length() > 0) {
                 valid = true;
-            }
-            else
-            {
+            } else {
                 System.out.println("Please enter your correct name");
-                passengerFName="";
+                passengerFName = "";
             }
         }
 
         boolean valid1 = false;
-        while (!valid1)
-        {
-            System.out.print("Enter your Last name: ");
+        while (!valid1) {
+            System.out.print("\nEnter your Last name: ");
             Scanner sc = new Scanner(System.in);
             this.PassengerLastName = sc.nextLine();
-            if (passengerLName.matches("^[a-zA-Z]*$")&&this.PassengerLastName.length()>0)
-            {
+            if (passengerLName.matches("^[a-zA-Z]*$") && this.PassengerLastName.length() > 0) {
                 valid1 = true;
-            }
-            else
-            {
+            } else {
                 System.out.println("Please enter your correct name");
-                passengerLName="";
+                passengerLName = "";
             }
 
 
@@ -72,42 +62,32 @@ public class Passenger {
     }
 
 
-    public void setPassengerPhone()
-    {
+    public void setPassengerPhone() {
         boolean valid = false;
-        while (!valid)
-        {
-            System.out.print("Enter your phone number: ");
+        while (!valid) {
+            System.out.print("\nEnter your phone number: ");
             Scanner sc = new Scanner(System.in);
             String phone = sc.nextLine();
-            this.PassengerPhone=phone;
-            if (this.PassengerPhone.matches("\\d{11}") && !this.PassengerPhone.isEmpty() && this.PassengerPhone.charAt(0) == '0')
-            {
+            this.PassengerPhone = phone;
+            if (this.PassengerPhone.matches("\\d{11}") && !this.PassengerPhone.isEmpty() && this.PassengerPhone.charAt(0) == '0') {
                 valid = true;
                 this.PassengerPhone = phone;
-            }
-            else
-            {
+            } else {
                 System.out.println("Please enter your correct number");
             }
         }
     }
 
-    public void setPassengerEmail(String passengerEmail)
-    {
+    public void setPassengerEmail(String passengerEmail) {
         boolean valid = false;
-        while (!valid)
-        {
-            System.out.print("Enter your Email: ");
+        while (!valid) {
+            System.out.print("\nEnter your Email: ");
             Scanner sc = new Scanner(System.in);
             this.PassengerEmail = sc.nextLine();
             if (this.PassengerEmail.contains("@") &&
-                    this.PassengerEmail.contains(".com")&& this.PassengerEmail.length()>10)
-            {
+                    this.PassengerEmail.contains(".com") && this.PassengerEmail.length() > 10) {
                 valid = true;
-            }
-            else
-            {
+            } else {
                 System.out.println("Please enter your correct Email)");
             }
         }
@@ -130,17 +110,16 @@ public class Passenger {
         return PassengerPhone;
     }
 
-    public void showPassengerInfo()
-    {
-        System.out.println ("Name: " + this.PassengerFirstName + " " + this.PassengerLastName
+    public void showPassengerInfo() {
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("Name: " + this.PassengerFirstName + " " + this.PassengerLastName
                 + "\nPassenger ID: " + this.PassengerID
                 + "\nEmail: " + this.PassengerEmail
                 + "\nPhone: " + this.PassengerPhone);
     }
 
 
-    public void addPassengerInfo()
-    {
+    public void addPassengerInfo() {
         String FirstName = "", LastName = "";
         setPassengerName(FirstName, LastName);
         setPassengerID();
@@ -149,22 +128,22 @@ public class Passenger {
         setPassengerPhone();
     }
 
-    public void PassengerInfo()
-    {
+    public void PassengerInfo() {
         addPassengerInfo();
         showPassengerInfo();
     }
-    public void addFlight (Booking booking) {
+
+    public void addFlight(Booking booking) {
         bookings.add(booking);
     }
-    public void getTotalBookings(){
-        if (getNumBookings() == 0){
+
+    public void getTotalBookings() {
+        if (getNumBookings() == 0) {
             System.out.println("==================");
             System.out.println("No Reservations!!");
             System.out.println("==================");
-        }
-        else {
-            for (int i = 0; i < bookings.size(); i++){
+        } else {
+            for (int i = 0; i < bookings.size(); i++) {
                 int count = i + 1;
                 System.out.println("================");
                 System.out.println("Reservation [" + count + "]");
@@ -175,11 +154,13 @@ public class Passenger {
         }
 
     }
-    public int getNumBookings(){
+
+    public int getNumBookings() {
         return bookings.size();
     }
-    public void getLastBooking(){
-        bookings.get(bookings.size()-1).getReservations();
+
+    public void getLastBooking() {
+        bookings.get(bookings.size() - 1).getReservations();
     }
 
 }
