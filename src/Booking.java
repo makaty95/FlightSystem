@@ -2,23 +2,52 @@ public class Booking {
     public Seat seatForBooking;
     Ticket ticket = new Ticket();
     public String serv;
-    int bookingID = 1000;
-    boolean bookingStatus;
+    private static int count = 0;
+    String bookingID;
+    String bookingStatus;
     public FlightDetails flightInfo;
-    private static int nextBookingID = 1000;
 
-    public Booking() {
-        this.bookingID = nextBookingID++;
+    public String getServ() {
+        return serv;
+    }
+
+    public String getBookingStatus() {
+        return bookingStatus;
+    }
+
+    public void setSeatForBooking(Seat seatForBooking) {
+        this.seatForBooking = seatForBooking;
+    }
+
+    public void setServ(String serv) {
+        this.serv = serv;
+    }
+
+    public void setBookingStatus(String bookingStatus) {
+        this.bookingStatus = bookingStatus;
+    }
+
+    public void setFlightInfo(FlightDetails flightInfo) {
+        this.flightInfo = flightInfo;
+    }
+
+    public Booking(String bookingId) {
+        count++;
+        this.bookingID = bookingId + count;
+
+    }
+    public Booking(){
+
     }
 
     // Getter for bookingID
-    public int getBookingID() {
+    public String getBookingID() {
         return bookingID;
     }
 
     // Cancel the booking and decrement nextBookingID
     public void cancelBooking() {
-        nextBookingID--;
+
         System.out.println("Booking ID " + bookingID + " has been canceled.");
     }
 
@@ -37,7 +66,7 @@ public class Booking {
         String RESET = "\u001B[0m";
         String GREEN = "\u001B[32m";
 
-        if (bookingStatus) {
+        if (bookingStatus.equals("true")) {
             System.out.println("Booking Status: " + GREEN + "Accepted" + RESET + "\n-------------------------------------------");
             this.setTicketData();
             ticket.showData();

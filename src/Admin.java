@@ -9,7 +9,7 @@ import java.time.format.*;
 
 public class Admin {
     final String password = "Admin_123456";
-    ArrayList<FlightDetails> flightDetailsArrayList = new ArrayList<>();
+    static ArrayList<FlightDetails> flightDetailsArrayList = new ArrayList<>();
     FlightDetails flight = new FlightDetails();
     private String[] Point;
 
@@ -62,7 +62,7 @@ public class Admin {
 
     public void showAllFlights() {
         int i = 1;
-        try{
+        try {
             for (FlightDetails flight : flightDetailsArrayList) {
                 System.out.println("flight number [ " + (i++) + " ]");
                 System.out.println("the departure location : " + flight.getDepartureLocation() +
@@ -77,7 +77,7 @@ public class Admin {
                         "\nthe arrival  airport location : " + flight.arrivalAirport.getAirportLocation() +
                         "\nthe arrival airport code : " + flight.arrivalAirport.getAirportCode());
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Exception with the 'flightDetailsArrayList' ArrayList in class Admin!");
         }
     }
@@ -94,7 +94,7 @@ public class Admin {
         }
     }
 
-    public void adminMenu(Admin admins) throws InterruptedException {
+    public void adminMenu(Admin admins) throws InterruptedException, IOException {
         int setCheck = 0;
         Scanner in = new Scanner(System.in);
         do {
@@ -140,9 +140,11 @@ public class Admin {
         } while (setCheck == 1);
     }
 
-    public void endMenu(Admin admins) throws InterruptedException {
+    public void endMenu(Admin admins) throws InterruptedException, IOException {
         System.out.println("--------------------------------------------------------------------------------------------\n");
         System.out.println("Press 1 -> If you want to continue as Admin\nPress 2 -> If you want to back to main menu");
+
+
         Scanner in = new Scanner(System.in);
         boolean decision = true;
         do {
@@ -156,5 +158,105 @@ public class Admin {
                 admins.endMenu(admins);
             }
         } while (!decision);
+    }
+
+    static void fetchData() {
+        try {
+            BufferedReader flightsFile = new BufferedReader(new FileReader("Flights_Data.txt"));
+            String[] line = new String[10];
+            String num = new String();
+            String Class;
+            int i = 0;
+            while ((line[i] = flightsFile.readLine()) != null) {
+                i++;
+                if (i == 10) {
+                    num = flightsFile.readLine();
+                    FlightDetails F = new FlightDetails();
+                    boolean check = false;
+                    while(true){
+                        Class = num;
+                        if (Class.equals("economic")){
+                            while((num = flightsFile.readLine()) != null){
+                                if (num.equals("business")){
+                                    Class = "business";
+                                    break;
+                                }
+                                F.NonValidSeatsEconomic.add(num);
+                            }
+                        }
+                        else if(Class.equals("business")){
+                            while((num = flightsFile.readLine()) != null){
+                                if (num.equals("FirstClass")){
+                                    Class = "FirstClass";
+                                    break;
+                                }
+                                F.NonValidSeatsBusiness.add(num);
+                            }
+                        }
+                        else if (Class.equals("FirstClass")){
+                            while((num = flightsFile.readLine()) != null){
+                                if (num.equals("end")){
+                                    check = true;
+                                    break;
+                                }
+                                F.NonValidSeatsFirstClass.add(num);
+                            }
+                        }
+                        if (check == true){
+                            break;
+                        }
+                    }
+                    F.flightNum = line[0];
+                    F.departureAirport.setAirportLocation(line[1]);
+                    F.arrivalAirport.setAirportLocation(line[2]);
+                    F.departure_time = line[3];
+                    F.arrival_time = line[4];
+                    F.setPrice(line[5]);
+                    F.departureAirport.setAirportName(line[6]);
+                    F.arrivalAirport.setAirportName(line[7]);
+                    F.departureAirport.setAirportCode(line[8]);
+                    F.arrivalAirport.setAirportCode(line[9]);
+                    i = 0;
+                    flightDetailsArrayList.add(F);
+                }
+            }
+            flightsFile.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveFlightDetailsToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Flights_Data.txt"))) {
+            for (FlightDetails flight : flightDetailsArrayList) {
+                // Write each piece of information on a new line in the file
+                writer.write(flight.getFlightNum() + "\n");
+                writer.write(flight.getDepartureLocation() + "\n");
+                writer.write(flight.getArrivalLocation() + "\n");
+                writer.write(flight.getDeparture_time() + "\n");
+                writer.write(flight.getArrival_time() + "\n");
+                writer.write(flight.getPrice() + "\n");
+                writer.write(flight.departureAirport.getAirportName() + "\n");
+                writer.write(flight.arrivalAirport.getAirportName() + "\n");
+                writer.write(flight.departureAirport.getAirportCode() + "\n");
+                writer.write(flight.arrivalAirport.getAirportCode() + "\n");
+                writer.write("economic" + "\n");
+                for (String S : flight.NonValidSeatsEconomic){
+                    writer.write(S + "\n");
+                }
+                writer.write("business" + "\n");
+                for (String S : flight.NonValidSeatsBusiness){
+                    writer.write(S + "\n");
+                }
+                writer.write("FirstClass" + "\n");
+                for (String S : flight.NonValidSeatsFirstClass){
+                    writer.write(S + "\n");
+                }
+                writer.write("end" + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

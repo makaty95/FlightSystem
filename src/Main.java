@@ -1,23 +1,37 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
+        Admin.fetchData();
+        Admin admins = new Admin();
+
+        List<FlightDetails> data = ArrayListData.flightDetails();
+        for(int i = 0 ; i < Admin.flightDetailsArrayList.size() ; i++ ){
+            data.add(Admin.flightDetailsArrayList.get(i));
+        }
+        Passengers_Reservations_Data.fetchPassengerData();
+        Passengers_Reservations_Data.fetchReservationsData();
         Scanner in = new Scanner(System.in);
 
-        FlightDetails[] f = new FlightDetails[5];
+
+       /* FlightDetails[] f = new FlightDetails[5];
         f[0] = new FlightDetails("101", "Cairo", "Qena", "Cairo International Airport", "Luxor (LXR) Airport", "AAA101", "CCC103", "01:06", "02:10", "9000");
         f[1] = new FlightDetails("102", "Cairo", "Alex", "Cairo International Airport", "Borg El Arab Airport", "AAA101", "CCC103", "05:30", "10:30", "26000");
         f[2] = new FlightDetails("103", "Cairo", "Qena", "Cairo International Airport", "Luxor (LXR) Airport", "AAA101", "CCC103", "01:10", "03:30", "25000");
         f[3] = new FlightDetails("104", "Cairo", "Alex", "Cairo International Airport", "Borg El Arab Airport", "AAA101", "CCC103", "01:00", "07:05", "15000");
         f[4] = new FlightDetails("105", "Cairo", "Qena", "Cairo International Airport", "Luxor (LXR) Airport", "AAA101", "CCC103", "01:07", "07:05", "10000");
+       */
         User user = new User();
-        ArrayListData a = new ArrayListData();
+        //ArrayListData a = new ArrayListData();
 
-        for (int i = 0; i < f.length; i++) {
+        /*for (int i = 0; i < f.length; i++) {
             a.addflightdetails(f[i]);
-        }
+        }*/
 
-        Admin admins = new Admin();
+
         System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t✈✈✈✈  Welcome to FCIS Flight Reservation System  ✈✈✈✈");
         System.out.print("\t\t\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------\n");
         System.out.print("1 -> To login as Admin\n2 -> To login as Passenger\n3 -> Exit\n");
@@ -48,6 +62,7 @@ public class Main {
                         }
                         clearConsole();
                         admins.adminMenu(admins);
+
                     } else {
                         System.out.println("Invalid Password .... Please try again");
                         checks = 1;
@@ -58,17 +73,18 @@ public class Main {
                 System.out.println("=====================");
                 System.out.println("Reserve Flight Now !!");
                 System.out.println("=====================");
-                user.enterData();
+                ////////////////////////////////////////////////////////////////
+                user.enterData(Passengers_Reservations_Data.passengersList);
+                ////////////////////////////////////////////////////////////////
+
                 boolean check = true;
                 try {
                     Thread.sleep(1500);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                clearConsole();
-                user.searchFlight();
                 while (check) {
-                    System.out.println("1. Reserve Another Flight" + "\n" +
+                    System.out.println("1. Reserve New Flight" + "\n" +
                             "2. View All Reservations" + "\n" +
                             "3. Cancel Reservations" + "\n" +
                             "4. Close");
@@ -80,7 +96,7 @@ public class Main {
                             } catch (InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
-                            clearConsole();
+
                             user.searchFlight();
                             break;
                         }
@@ -90,7 +106,7 @@ public class Main {
                             } catch (InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
-                            clearConsole();
+
                             user.displayAllReservations();
                             break;
 
@@ -100,21 +116,25 @@ public class Main {
                             } catch (InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
-                            clearConsole();
+
                             user.displayAllReservations();
                             user.cancelFlight();
                             break;
 
                         } else if (choice == 4) {
-                            check = false;
-                            break;
+                            Passengers_Reservations_Data.saveReservationsData();
+                            Passengers_Reservations_Data.savePassengersData();
+                            Admin.saveFlightDetailsToFile();
+                            System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t✈✈✈✈  Thank you for using our application  ✈✈✈✈");
+                            System.out.print("\t\t\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------\n");
+                            System.exit(0);
                         } else {
                             System.out.println("Wrong , try again!");
                         }
                     }
                 }
-                System.out.println("===\nEnd\n===");
             } else if (choose == 3) {
+                Admin.saveFlightDetailsToFile();
                 System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t✈✈✈✈  Thank you for using our application  ✈✈✈✈");
                 System.out.print("\t\t\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------\n");
                 System.exit(0);
@@ -124,6 +144,7 @@ public class Main {
             }
         } while (!loopCheck);
     }
+
 
 
     // Don't touch will be completed by METWALLYؤ
@@ -144,5 +165,6 @@ public class Main {
             e.printStackTrace();
         }
     }
+
 }
 

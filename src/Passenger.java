@@ -1,4 +1,5 @@
 import javax.xml.namespace.QName;
+import java.io.IOException;
 import java.util.*;
 
 public class Passenger {
@@ -28,7 +29,9 @@ public class Passenger {
         }
         this.PassengerID = stringBuilder.toString();
     }
-
+    public void setOldPassengerID(String PassengerID){
+        this.PassengerID = PassengerID;
+    }
     public void setPassengerName(String passengerFName, String passengerLName) {
         boolean valid = false;
         while (!valid) {
@@ -56,9 +59,11 @@ public class Passenger {
                 System.out.println("Please enter your correct name");
                 passengerLName = "";
             }
-
-
         }
+    }
+    public void setOldPassengerName(String PassengerFirstName , String PassengerLastName ){
+        this.PassengerFirstName = PassengerFirstName;
+        this.PassengerLastName = PassengerLastName;
     }
 
 
@@ -76,6 +81,9 @@ public class Passenger {
                 System.out.println("Please enter your correct number");
             }
         }
+    }
+    public void setOldPassengerPhone(String PassengerPhone){
+        this.PassengerPhone = PassengerPhone;
     }
 
     public void setPassengerEmail(String passengerEmail) {
@@ -97,15 +105,23 @@ public class Passenger {
         return this.PassengerID;
     }
 
+    public String getPassengerFirstName() {
+        return PassengerFirstName;
+    }
 
-    public String getPassengerName() {
-        return this.PassengerFirstName;
+
+
+    public String getPassengerLastName() {
+        return this.PassengerLastName ;
     }
 
     public String getPassengerEmail() {
         return this.PassengerEmail;
     }
 
+    public void setOldPassengerEmail(String PassengerEmail){
+        this.PassengerEmail = PassengerEmail;
+    }
     public String getPassengerPhone() {
         return PassengerPhone;
     }
@@ -116,25 +132,47 @@ public class Passenger {
                 + "\nPassenger ID: " + this.PassengerID
                 + "\nEmail: " + this.PassengerEmail
                 + "\nPhone: " + this.PassengerPhone);
+        System.out.println("-----------------------------------------------------------------------------");
     }
 
 
-    public void addPassengerInfo() {
+    public void addPassengerInfo(ArrayList<Passenger> passengers) throws IOException {
         String FirstName = "", LastName = "";
         setPassengerName(FirstName, LastName);
-        setPassengerID();
         String Email = "";
         setPassengerEmail(Email);
         setPassengerPhone();
+        // Compare Data From file
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        boolean check = true;
+        for(Passenger p : passengers){
+            if (p.getPassengerEmail().equals(PassengerEmail) && p.getPassengerPhone().equals(PassengerPhone))
+            {
+                check = false;
+                setOldPassengerID(p.getPassengerID());
+                Passengers_Reservations_Data.Old = true;
+                this.bookings = p.bookings;
+                System.out.println("\n=======================================");
+                System.out.println("★ This Data Has Been Recorded Before ★");
+                System.out.println("=======================================\n");
+
+            }
+        }
+        if (check == true) {
+            setPassengerID();
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     }
 
-    public void PassengerInfo() {
-        addPassengerInfo();
+    public void PassengerInfo(ArrayList<Passenger> p) throws IOException {
+        addPassengerInfo(p);
         showPassengerInfo();
     }
 
     public void addFlight(Booking booking) {
         bookings.add(booking);
+        Passengers_Reservations_Data.reservationsList.add(booking);
     }
 
     public void getTotalBookings() {

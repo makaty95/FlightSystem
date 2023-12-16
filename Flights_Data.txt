@@ -1,0 +1,116 @@
+101
+Cairo
+Alex
+01:00
+02:00
+4966
+Cairo International Airport
+Borg El Arab International Airport
+CCC103
+CSC153
+economic
+01
+business
+01
+FirstClass
+01
+end
+102
+Cairo
+Luxor
+05:30
+07:10
+7000
+Cairo International Airport
+Luxor International Airport
+CSX203
+CDE183
+economic
+business
+FirstClass
+end
+103
+Cairo
+Aswan
+06:05
+07:10
+6000
+Cairo International Airport
+Aswan International Airport
+CYU973
+C57193
+economic
+business
+FirstClass
+end
+104
+Cairo
+Hurghada
+06:00
+07:00
+4000
+Cairo International Airport
+Hurghada International Airport
+CIO508
+CES504
+economic
+business
+FirstClass
+end
+105
+Alex
+Cairo
+01:00
+02:00
+4159
+Borg El Arab International Airport
+Cairo International Airport
+YUO153
+RTV923
+economic
+01
+business
+FirstClass
+end
+106
+Luxor
+Cairo
+01:30
+02:10
+7000
+Luxor International Airport
+Cairo International Airport
+CHC183
+CTJ143
+economic
+business
+FirstClass
+end
+107
+Aswan
+Cairo
+04:05
+05:10
+6000
+Aswan International Airport
+Cairo International Airport
+CDW953
+CDW853
+economic
+business
+FirstClass
+end
+108
+Hurghada
+Cairo
+03:00
+04:00
+4000
+Hurghada International Airport
+Cairo International Airport
+CHE809
+CES505
+economic
+business
+FirstClass
+end

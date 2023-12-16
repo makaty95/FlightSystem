@@ -94,6 +94,7 @@ public class FlightDetails {
         this.arrivalAirport.setAirportLocation(arrivalLocation);
         this.arrivalAirport.setAirportName(arrivalAirportName);
         this.arrivalAirport.setAirportCode(arrivalAirportCode);
+
     }
 
     public String getFlightNum() {

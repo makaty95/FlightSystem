@@ -6,7 +6,7 @@ public class Payment {
     private final int paymentID;
     private int paymentAmount;
     private String paymentMethod;
-    public boolean paymentStatus;
+    public String paymentStatus;
     Scanner input = new Scanner(System.in);
 
 
@@ -61,9 +61,9 @@ public class Payment {
         }
 
         if (choice == 1) {
-            this.paymentStatus = true;
+            this.paymentStatus = "true";
         } else if (choice == 2) {
-            this.paymentStatus = false;
+            this.paymentStatus = "false";
         } else {
             System.out.println("Error !! , Try again");
             this.paymentConfirmation();

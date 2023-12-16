@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -9,7 +10,6 @@ public class User {
 
     ArrayListData a = new ArrayListData();
     Passenger p = new Passenger();
-
     public void searchFlight() {
         Scanner In = new Scanner(System.in);
         // User Search for Departure Airport
@@ -126,7 +126,7 @@ public class User {
 
     public void selectFlight(String departureLocationEnter, String arrivalLocationEnter) {
         List<FlightDetails> data = ArrayListData.flightDetails();
-        Booking booking = new Booking();
+        Booking booking = new Booking(p.getPassengerID());
         FlightDetails flightInfo = new FlightDetails();
 
         // User select the Flight number
@@ -200,15 +200,18 @@ public class User {
 
         }
         System.out.println("_________________________________________________________________________________________");
-        booking.seatForBooking = userSeatSelection(booking.flightInfo.NonValidSeatsEconomic, booking.flightInfo.NonValidSeatsFirstClass, booking.flightInfo.NonValidSeatsBusiness);
+        booking.setSeatForBooking(userSeatSelection(booking.flightInfo.NonValidSeatsEconomic, booking.flightInfo.NonValidSeatsFirstClass, booking.flightInfo.NonValidSeatsBusiness))  ;
         p.addFlight(booking);
         booking.bookingStatus = userPayment(booking);
         displayCurrentFlights();
     }
 
 
-    public void enterData() {
-        p.PassengerInfo();
+    public void enterData(ArrayList<Passenger> passengersList) throws IOException {
+        p.PassengerInfo(passengersList);
+        if (!Passengers_Reservations_Data.Old){
+            Passengers_Reservations_Data.passengersList.add(p);
+        }
     }
 
     public void displayCurrentFlights() {
@@ -244,7 +247,7 @@ public class User {
         return seat;
     }
 
-    public boolean userPayment(Booking booking) {
+    public String userPayment(Booking booking) {
         Payment pay = new Payment();
         pay.setPaymentMethod();
         String sClass = null, services = null;
@@ -255,7 +258,7 @@ public class User {
         Price = pay.calcPaymentAmount(Price, sClass, services);
         booking.flightInfo.setPrice(String.valueOf(Price));
         //***********************************************************************************
-        if (!pay.paymentStatus) {
+        if (pay.paymentStatus == "false") {
             cancelSeat();
         }
         //***********************************************************************************
@@ -280,9 +283,7 @@ public class User {
                         String S = p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.get(i);
                         if (formattedNumber.equals(S)) {
                             p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.remove(i);
-
                             break;
-
                         }
                     }
                     break;
@@ -312,7 +313,15 @@ public class User {
             }
 
         }
+        int it = 0;
+        for (Booking B : Passengers_Reservations_Data.reservationsList){
+            if (p.bookings.get(choice).getBookingID().equals(B.getBookingID())){
+                Passengers_Reservations_Data.reservationsList.remove(it);
+            }
+            it++;
+        }
         p.bookings.remove(choice);
+
     }
 
     void cancelSeat() {

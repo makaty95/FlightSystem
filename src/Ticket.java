@@ -12,6 +12,22 @@ public class Ticket {
     private String seatClass;
     private int seatNum;
 
+    public String getExpireDate() {
+        return expireDate;
+    }
+
+    private String expireDate = null;
+
+    public void setExpireDate(String expireDate) {
+        this.expireDate = expireDate;
+    }
+    public void defaultExpireDate()
+    {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate today = LocalDate.now();
+        LocalDate After30day = today.plusDays(30);
+        expireDate = dtf.format(After30day);
+    }
     public void setDepartureAirportName(String departureAirportName) {
         this.departureAirportName = departureAirportName;
     }
@@ -54,15 +70,19 @@ public class Ticket {
         this.ticketFare = ticketFare;
     }
 
-    public boolean getTicketStatus() {
+    public String getTicketStatus() {
         return ticketStatus;
     }
 
-    public void setTicketStatus(boolean ticketStatus) {
+    public void setTicketNumber(int ticketNumber) {
+        this.ticketNumber = ticketNumber;
+    }
+
+    public void setTicketStatus(String ticketStatus) {
         this.ticketStatus = ticketStatus;
     }
 
-    private boolean ticketStatus;
+    private String ticketStatus;
 
     public void showData() {
         System.out.println("################################################################################");
@@ -92,27 +112,21 @@ public class Ticket {
         System.out.println("##                                                                            ##");
         System.out.println("##                                                                            ##");
         System.out.println("##                                                                            ##");
-
         System.out.println("Ticket Number : " + this.getTicketNumber());
         String RESET = "\u001B[0m";
         String GREEN = "\u001B[32m";
         System.out.println("Ticket State : " + GREEN + "Confirmed" + RESET);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate today = LocalDate.now();
-
-        LocalDate finalDate = null;
-
-        LocalDate After30day = today.plusDays(30);
-        System.out.print("Expire Date: ");
-        System.out.println(dtf.format(After30day));
-
-
+        if (expireDate == null) {
+            this.defaultExpireDate();
+        }
+        System.out.println("Expire Date: " + expireDate);
         System.out.println("Ticket Fare : " + this.getTicketFare());
-
         System.out.println("Departure Airport Name : " + departureAirportName);
         System.out.println("Arrival Airport Name : " + arrivalAirportName);
         System.out.println("Seat Class : " + seatClass);
         System.out.println("Seat Num : " + seatNum);
         System.out.println("################################################################################");
     }
+
+
 }
