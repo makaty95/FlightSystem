@@ -78,16 +78,6 @@ public class FlightDetails {
         this.price = price;
         this.departure_time = departure_time;
         this.arrival_time = arrival_time;
-        ///////////////////////////////////
-        //========================
-        // ONLY TO TEST BY ASHRAF
-        //========================
-        NonValidSeatsBusiness.add("01");
-        NonValidSeatsBusiness.add("02");
-        NonValidSeatsBusiness.add("03");
-        NonValidSeatsBusiness.add("04");
-        NonValidSeatsBusiness.add("10");
-        ///////////////////////////////////
         this.departureAirport.setAirportLocation(departureLocation);
         this.departureAirport.setAirportName(departureAirportName);
         this.departureAirport.setAirportCode(departureAirportCode);

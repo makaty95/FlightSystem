@@ -96,3 +96,5 @@ public class Payment {
         return price + fees;
     }
 }
+
+

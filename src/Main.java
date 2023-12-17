@@ -147,7 +147,7 @@ public class Main {
 
 
 
-    // Don't touch will be completed by METWALLYؤ
+    // Don't touch will be completed by METWALLY
     public static void clearConsole() {
         try {
             final String os = System.getProperty("os.name");

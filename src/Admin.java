@@ -16,7 +16,6 @@ public class Admin {
     public void addFlight() {
         System.out.print("Enter the flight details");
         System.out.println("=========================\n");
-
         System.out.print("Enter flight departure location: ");
         Scanner scanner = new Scanner(System.in);
         String airportDeparture = scanner.nextLine();

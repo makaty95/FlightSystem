@@ -267,6 +267,8 @@ public class User {
     }
 
     void cancelFlight() {
+    if (p.getNumBookings() != 0){
+
         System.out.print("Please enter the reservation number you want to cancel: ");
         int choice;
         while (true) {
@@ -322,6 +324,7 @@ public class User {
         }
         p.bookings.remove(choice);
 
+    }
     }
 
     void cancelSeat() {
