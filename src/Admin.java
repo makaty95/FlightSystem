@@ -6,7 +6,50 @@ import java.util.*;
 import java.time.*;
 import java.io.*;
 import java.time.format.*;
+import java.lang.String;
+interface test
+{
+    public static boolean testInput(String input) {
+        return false;
+    }
+}
+class namesTester implements test{
 
+    public static boolean testInput(String input) {
+        for(int i=0;i<input.length();i++)
+        { if (input.charAt(i) >= 'a' && input.charAt(i) <= 'z' || input.charAt(i) >= 'A' &&input.charAt(i)<= 'Z')
+            continue;
+        else return false;
+        }
+        return input.length()>0;
+    }
+}
+class numberTester implements test{
+    public static boolean testInput(String input) {
+        for(int i=0;i<input.length();i++)
+        {
+            if (input.charAt(i) >= '0' && input.charAt(i) <= '9')
+                continue;
+            else return false;
+        }
+        return input.length()>0;
+    }
+}
+class lineTester implements test {
+    public static boolean testInput(String input) {
+        for(int i=0;i<input.length();i++)
+        { if (input.charAt(i)==' '||input.charAt(i) >= 'a' && input.charAt(i) <= 'z' || input.charAt(i) >= 'A' &&input.charAt(i)<= 'Z')
+            continue;
+        else return false;
+        }
+        return input.length()>0;
+    }
+}
+class codeTester implements test{
+    public static boolean testInput(String input) {
+        return input.length()==3&&input.charAt(0)>='A'&&input.charAt(0)<='Z'&&input.charAt(1)>='A'&&input.charAt(1)<='Z'&&input.charAt(2)>='A'&&input.charAt(2)<='Z';
+    }
+}
 public class Admin {
     final String password = "Admin_123456";
     static ArrayList<FlightDetails> flightDetailsArrayList = new ArrayList<>();
@@ -17,36 +60,120 @@ public class Admin {
         System.out.print("Enter the flight details");
         System.out.println("=========================\n");
         System.out.print("Enter flight departure location: ");
+        boolean check=false;
         Scanner scanner = new Scanner(System.in);
-        String airportDeparture = scanner.nextLine();
+        String airportDeparture=null;
+        while(!check)
+        {
+            airportDeparture = scanner.nextLine();
+            if(!namesTester.testInput(airportDeparture))
+            {
+                System.out.println("invalid value try again");
+            }
+            else check=true;
+        }
+//_______________________________________________________________________________________
         this.flight.departureAirport.setAirportLocation(airportDeparture);
         this.flight.setDepartureLocation(airportDeparture);
         System.out.print("\nEnter the data of departure airport");
         System.out.println("\n-----------------------------------------------");
         System.out.print("\nEnter the name of the airport: ");
-        String airportDepartureName = scanner.nextLine();
+        String airportDepartureName =null;
+        boolean check5=false;
+        while(!check5)
+        {
+            airportDepartureName= scanner.nextLine();
+            if(!lineTester.testInput(airportDepartureName))
+            {
+                System.out.println("invalid value please try again");
+            }
+            else check5=true;
+        }
         this.flight.departureAirport.setAirportName(airportDepartureName);
-        System.out.print("\nEnter the airport code: ");
-        //advanced search and match with airport code in the arraylist;
-        String airportDepartureCode = scanner.nextLine();
+        System.out.print("\nEnter the departure airport code: ");
+        String airportDepartureCode =null;
+        boolean checker6=false;
+        while(!checker6)
+        {
+            airportDepartureCode= scanner.nextLine();
+            if(!codeTester.testInput(airportDepartureCode))
+            {
+                System.out.println("invalid value please try again");
+            }
+            else checker6=true;
+        }
         this.flight.departureAirport.setAirportCode(airportDepartureCode);
+        //_____________________________________________________________________________________
         // entering the data of arrival airport for the flight
         System.out.print("\nEnter flight arrival location: ");
-        String airportArrival = scanner.nextLine();
+        String airportArrival =null;
+        boolean check1=false;
+        while(!check1)
+        {
+            airportArrival = scanner.nextLine();
+            if(!namesTester.testInput(airportArrival))
+            {
+                System.out.println("invalid value please try again");
+            }
+            else check1=true;
+        }
+
         this.flight.arrivalAirport.setAirportLocation(airportArrival);
         this.flight.setArrivalLocation(airportArrival);
+
+
+        //___________________________________________________________________________________
+
+
         System.out.print("\nEnter the data of arrival airport");
         System.out.println("\n-----------------------------------------------");
         System.out.print("\nEnter the name of the airport: ");
-        String airportArrivalName = scanner.nextLine();
+        String airportArrivalName = null;
+        boolean check4=false;
+        while(!check4)
+        {
+            airportArrivalName=scanner.nextLine();
+            if(!lineTester.testInput(airportArrivalName))
+            {
+                System.out.println("invalid value please try again");
+            }
+            else check4=true;
+        }
+
         this.flight.arrivalAirport.setAirportName(airportArrivalName);
         System.out.print("\nEnter the airport code: ");
-        //advanced search and match with airport code in the arraylist;
-        String airportArrivalCode = scanner.nextLine();
+        String airportArrivalCode =null;
+        boolean checker7=false;
+        while(!checker7)
+        {
+            airportArrivalCode= scanner.nextLine();
+
+            if(!codeTester.testInput(airportArrivalCode))
+            {
+                System.out.println("invalid value please try again");
+            }
+            else checker7=true;
+        }
         this.flight.arrivalAirport.setAirportCode(airportArrivalCode);
+
+        //______________________________________________________________________________________________
+
         System.out.print("\nEnter the flight number: ");
-        String flightNum = scanner.nextLine();
+        String flightNum =null;
+        boolean check2=false;
+        while(!check2)
+        {
+            flightNum=scanner.nextLine();
+            if(!numberTester.testInput(flightNum))
+            {
+                System.out.println("invalid value please try again");
+            }
+            else check2=true;
+        }
         this.flight.setFlightNum(flightNum);
+
+        //________________________________________________________________________
+
         System.out.print("\nEnter the flight departure time: ");
         String departureTime = scanner.nextLine();
         this.flight.setDeparture_time(departureTime);
@@ -54,7 +181,17 @@ public class Admin {
         String arrivalTime = scanner.nextLine();
         this.flight.setArrival_time(arrivalTime);
         System.out.print("\nEnter the flight price: ");
-        String price = scanner.nextLine();
+        String price =null;
+        boolean check3=false;
+        while(!check3)
+        {
+            price=scanner.nextLine();
+            if(!numberTester.testInput(price))
+            {
+                System.out.println("invalid value please try again");
+            }
+            else check3=true;
+        }
         this.flight.setPrice(price);
         flightDetailsArrayList.add(flight);
     }
@@ -74,7 +211,8 @@ public class Admin {
                         "\nthe departure airport code : " + flight.departureAirport.getAirportCode() +
                         "\nthe arrival  airport name : " + flight.arrivalAirport.getAirportName() +
                         "\nthe arrival  airport location : " + flight.arrivalAirport.getAirportLocation() +
-                        "\nthe arrival airport code : " + flight.arrivalAirport.getAirportCode());
+                        "\nthe arrival airport code : " + flight.arrivalAirport.getAirportCode()+
+                        "\n______________________________________________________________________________________\n");
             }
         } catch (Exception e) {
             System.out.println("Exception with the 'flightDetailsArrayList' ArrayList in class Admin!");
