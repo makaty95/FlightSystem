@@ -2,12 +2,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         Admin.fetchData();
         Admin admins = new Admin();
         List<FlightDetails> data = ArrayListData.flightDetails();
-        for(int i = 0 ; i < Admin.flightDetailsArrayList.size() ; i++ ){
+        for (int i = 0; i < Admin.flightDetailsArrayList.size(); i++) {
             data.add(Admin.flightDetailsArrayList.get(i));
         }
         Passengers_Reservations_Data.fetchPassengerData();
@@ -20,9 +21,9 @@ public class Main {
         boolean loopCheck = true;
         do {
             int choose = 0;
-            try{
+            try {
                 choose = in.nextInt();
-            }catch(Exception ex){
+            } catch (Exception ex) {
                 System.out.println("Invalid Input! , " + " Exception: " + ex);
                 return;
             }
@@ -45,9 +46,7 @@ public class Main {
                         checks = 1;
                     }
                 } while (checks == 1);
-                adminMenu(admins);
-            }
-            else if (choose == 2) {
+            } else if (choose == 2) {
                 userMenu(user);
             } else if (choose == 3) {
                 exitFunction();
@@ -59,7 +58,7 @@ public class Main {
     }
 
 
-    public static void adminMenu(Admin admins) throws InterruptedException, IOException {
+    public static void adminMenu(Admin admins) {
         int setCheck = 0;
         Scanner in = new Scanner(System.in);
         do {
@@ -103,7 +102,7 @@ public class Main {
     }
 
 
-    public static void adminEndMenu(Admin admins) throws InterruptedException, IOException {
+    public static void adminEndMenu(Admin admins) {
         System.out.println("-------------------------------------------------------------------------------------------------\n");
         System.out.println("Press 1 -> Back To Admin Menu\nPress 2 -> To Exit");
         Scanner in = new Scanner(System.in);
@@ -114,7 +113,7 @@ public class Main {
                 adminMenu(admins);
             } else if (checkPoint == 2) {
                 exitFunction();
-            } else{
+            } else {
                 System.out.println("Invalid choice .... please try again");
                 decision = false;
             }
@@ -122,7 +121,7 @@ public class Main {
     }
 
 
-    public static void exitFunction(){
+    public static void exitFunction() {
         Admin.saveFlightDetailsToFile();
         System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t✈✈✈✈  Thank you for using our application  ✈✈✈✈");
         System.out.print("\t\t\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------\n");
@@ -162,7 +161,6 @@ public class Main {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-
                     user.searchFlight();
                     break;
                 }
@@ -172,7 +170,6 @@ public class Main {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-
                     user.displayAllReservations();
                     break;
 

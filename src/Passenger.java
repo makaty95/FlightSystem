@@ -16,22 +16,22 @@ public class Passenger {
     public void setPassengerID() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        // Generate the first 3 letters
         for (int i = 0; i < 3; i++) {
             char letter = (char) ('A' + Math.random() * ('Z' - 'A' + 1));
             stringBuilder.append(letter);
         }
 
-        // Generate the next 6 digits
         for (int i = 0; i < 6; i++) {
             int digit = (int) (Math.random() * 10);
             stringBuilder.append(digit);
         }
         this.PassengerID = stringBuilder.toString();
     }
-    public void setOldPassengerID(String PassengerID){
+
+    public void setOldPassengerID(String PassengerID) {
         this.PassengerID = PassengerID;
     }
+
     public void setPassengerName(String passengerFName, String passengerLName) {
         boolean valid = false;
         System.out.println("Please enter your information");
@@ -61,7 +61,8 @@ public class Passenger {
             }
         }
     }
-    public void setOldPassengerName(String PassengerFirstName , String PassengerLastName ){
+
+    public void setOldPassengerName(String PassengerFirstName, String PassengerLastName) {
         this.PassengerFirstName = PassengerFirstName;
         this.PassengerLastName = PassengerLastName;
     }
@@ -82,7 +83,8 @@ public class Passenger {
             }
         }
     }
-    public void setOldPassengerPhone(String PassengerPhone){
+
+    public void setOldPassengerPhone(String PassengerPhone) {
         this.PassengerPhone = PassengerPhone;
     }
 
@@ -109,18 +111,18 @@ public class Passenger {
     }
 
 
-
     public String getPassengerLastName() {
-        return this.PassengerLastName ;
+        return this.PassengerLastName;
     }
 
     public String getPassengerEmail() {
         return this.PassengerEmail;
     }
 
-    public void setOldPassengerEmail(String PassengerEmail){
+    public void setOldPassengerEmail(String PassengerEmail) {
         this.PassengerEmail = PassengerEmail;
     }
+
     public String getPassengerPhone() {
         return PassengerPhone;
     }
@@ -142,11 +144,10 @@ public class Passenger {
         setPassengerEmail(Email);
         setPassengerPhone();
         // Compare Data From file
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         boolean check = true;
-        for(Passenger p : passengers){
-            if (p.getPassengerEmail().equals(PassengerEmail) && p.getPassengerPhone().equals(PassengerPhone))
-            {
+        for (Passenger p : passengers) {
+            if (p.getPassengerEmail().equals(PassengerEmail) && p.getPassengerPhone().equals(PassengerPhone)) {
                 check = false;
                 setOldPassengerID(p.getPassengerID());
                 Passengers_Reservations_Data.Old = true;
@@ -157,10 +158,9 @@ public class Passenger {
 
             }
         }
-        if (check == true) {
+        if (check) {
             setPassengerID();
         }
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     }
 
@@ -185,9 +185,9 @@ public class Passenger {
                 System.out.println("================");
                 System.out.println("Reservation [" + count + "]");
                 System.out.println("================");
-                try{
+                try {
                     bookings.get(i).getReservations();
-                }catch(ArrayIndexOutOfBoundsException ex){
+                } catch (ArrayIndexOutOfBoundsException ex) {
                     System.out.println("Exception : " + ex);
                     System.exit(1);
                 }

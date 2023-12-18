@@ -8,6 +8,7 @@ public class ArrayListData {
     public static List<FlightDetails> flightDetails() {
         return Listdata;
     }
+
     public void addflightdetails(FlightDetails flight) {
         Listdata.add(flight);
     }

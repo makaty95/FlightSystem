@@ -50,21 +50,21 @@ public class FlightDetails {
         char s = getArrival_time().charAt(0);
         char d = getArrival_time().charAt(1);
         String hour1 = String.valueOf(s + d);
-        int a = Integer.parseInt(hour1);//الكبير
+        int a = Integer.parseInt(hour1);
 
         char q = getDeparture_time().charAt(0);
         char w = getDeparture_time().charAt(1);
         String hour2 = String.valueOf(q + w);
-        int b = Integer.parseInt(hour2);//الصغنن
+        int b = Integer.parseInt(hour2);
 
         char z = getArrival_time().charAt(3);
         char x = getArrival_time().charAt(4);
         String minute1 = String.valueOf(z + x);
-        int c = Integer.parseInt(minute1);//كبير دقايق
+        int c = Integer.parseInt(minute1);
 
         char t = getDeparture_time().charAt(3);
         char y = getDeparture_time().charAt(4);
-        String minute2 = String.valueOf(t + y);//صغنن دقيق
+        String minute2 = String.valueOf(t + y);
 
         int n = Integer.parseInt(minute2);
         c += (a * 60);
@@ -124,4 +124,3 @@ public class FlightDetails {
                 "Duration of the flight about: " + calcDuration() / 60 + " hours and " + calcDuration() % 60 + " minutes");
     }
 }
-// flight     p      num od seat    num of tickets

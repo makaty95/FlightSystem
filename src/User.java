@@ -10,6 +10,7 @@ public class User {
 
     ArrayListData a = new ArrayListData();
     Passenger p = new Passenger();
+
     public void searchFlight() {
         Scanner In = new Scanner(System.in);
         // User Search for Departure Airport
@@ -25,11 +26,8 @@ public class User {
             System.out.print("Enter Departure Airport: ");
             departureLocationEnter = In.nextLine();
 
-            // User Search for Arrival Airport
             System.out.print("Enter Arrival Airport: ");
             arrivalLocationEnter = In.nextLine();
-
-            // Search by Departure airport and arrival airport in the Arraylist
 
             for (FlightDetails search : data) {
                 if (search.departureAirport.getAirportLocation().equals(departureLocationEnter) && search.arrivalAirport.getAirportLocation().equals(arrivalLocationEnter)) {
@@ -41,10 +39,9 @@ public class User {
                 System.out.println("sorry there is no flights matching with your requirements at the moment :(");
                 System.out.println("Press 1 -> To return to your menu\nPress 2 -> To Continue");
                 int choice = In.nextInt();
-                if(choice == 1){
+                if (choice == 1) {
                     return;
-                }
-                else if(choice == 2){
+                } else if (choice == 2) {
                     flag = true;
                 }
                 In.nextLine();
@@ -54,7 +51,6 @@ public class User {
         finalDate = Day();
         // Sort the list based on departure time
         matchingFlights.sort(Comparator.comparing(FlightDetails::getDeparture_time));
-
         // Display the sorted result
         try {
             Thread.sleep(2000);
@@ -66,7 +62,6 @@ public class User {
                     flight.departureAirport.getAirportLocation() + "        | " + "      " + flight.arrivalAirport.getAirportLocation() + "       | " +
                     "      " + flight.departure_time + "    | " + "    " + flight.arrival_time + "    | " +
                     "   " + flight.calcDuration() / 60 + " hours and  " + flight.calcDuration() % 60 + " minutes   | " + finalDate);
-            //  `(*>﹏<*)′
         }
         selectFlight(departureLocationEnter, arrivalLocationEnter);
     }
@@ -175,9 +170,9 @@ public class User {
 
         while (true) {
             int serviceChoice = 10;
-            try{
+            try {
                 serviceChoice = In.nextInt();
-            }catch(Exception exception){
+            } catch (Exception exception) {
                 System.out.println("Invalid input!");
                 System.exit(101);
             }
@@ -202,7 +197,7 @@ public class User {
 
         }
         System.out.println("_________________________________________________________________________________________");
-        booking.setSeatForBooking(userSeatSelection(booking.flightInfo.NonValidSeatsEconomic, booking.flightInfo.NonValidSeatsFirstClass, booking.flightInfo.NonValidSeatsBusiness))  ;
+        booking.setSeatForBooking(userSeatSelection(booking.flightInfo.NonValidSeatsEconomic, booking.flightInfo.NonValidSeatsFirstClass, booking.flightInfo.NonValidSeatsBusiness));
         p.addFlight(booking);
         booking.bookingStatus = userPayment(booking);
         displayCurrentFlights();
@@ -211,7 +206,7 @@ public class User {
 
     public void enterData(ArrayList<Passenger> passengersList) throws IOException {
         p.PassengerInfo(passengersList);
-        if (!Passengers_Reservations_Data.Old){
+        if (!Passengers_Reservations_Data.Old) {
             Passengers_Reservations_Data.passengersList.add(p);
         }
     }
@@ -259,83 +254,80 @@ public class User {
         Price = Price + Integer.parseInt(booking.flightInfo.price);
         Price = pay.calcPaymentAmount(Price, sClass, services);
         booking.flightInfo.setPrice(String.valueOf(Price));
-        //***********************************************************************************
         if (pay.paymentStatus == "false") {
             cancelSeat();
         }
-        //***********************************************************************************
-
         return pay.paymentStatus;
     }
 
     void cancelFlight() {
-    if (p.getNumBookings() != 0){
+        if (p.getNumBookings() != 0) {
 
-        System.out.print("Please enter the reservation number you want to cancel: ");
-        int choice;
-        while (true) {
-            Scanner In = new Scanner(System.in);
-            choice = In.nextInt();
-            choice--;
-            if (choice >= 0 && choice < p.getNumBookings()) {
-                int seatNum = p.bookings.get(choice).seatForBooking.getSeat_Num();
-                String formattedNumber = String.format("%02d", seatNum);
-                String seatClass = p.bookings.get(choice).seatForBooking.getSeatClass();
-                if (seatClass == "Economy") {
-                    int size = p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.size();
-                    for (int i = 0; i < size; i++) {
-                        String S = p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.get(i);
-                        if (formattedNumber.equals(S)) {
-                            p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.remove(i);
-                            break;
+            System.out.print("Please enter the reservation number you want to cancel: ");
+            int choice;
+            while (true) {
+                Scanner In = new Scanner(System.in);
+                choice = In.nextInt();
+                choice--;
+                if (choice >= 0 && choice < p.getNumBookings()) {
+                    int seatNum = p.bookings.get(choice).seatForBooking.getSeat_Num();
+                    String formattedNumber = String.format("%02d", seatNum);
+                    String seatClass = p.bookings.get(choice).seatForBooking.getSeatClass();
+                    if (seatClass == "Economy") {
+                        int size = p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.size();
+                        for (int i = 0; i < size; i++) {
+                            String S = p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.get(i);
+                            if (formattedNumber.equals(S)) {
+                                p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.remove(i);
+                                break;
+                            }
                         }
-                    }
-                    break;
-                } else if (seatClass == "Business") {
-                    int size = p.bookings.get(choice).flightInfo.NonValidSeatsBusiness.size();
-                    for (int i = 0; i < size; i++) {
-                        String S = p.bookings.get(choice).flightInfo.NonValidSeatsBusiness.get(i);
-                        if (formattedNumber.equals(S)) {
-                            p.bookings.get(choice).flightInfo.NonValidSeatsBusiness.remove(i);
-                            break;
+                        break;
+                    } else if (seatClass == "Business") {
+                        int size = p.bookings.get(choice).flightInfo.NonValidSeatsBusiness.size();
+                        for (int i = 0; i < size; i++) {
+                            String S = p.bookings.get(choice).flightInfo.NonValidSeatsBusiness.get(i);
+                            if (formattedNumber.equals(S)) {
+                                p.bookings.get(choice).flightInfo.NonValidSeatsBusiness.remove(i);
+                                break;
+                            }
                         }
+                        break;
+                    } else {
+                        int size = p.bookings.get(choice).flightInfo.NonValidSeatsFirstClass.size();
+                        for (int i = 0; i < size; i++) {
+                            String S = p.bookings.get(choice).flightInfo.NonValidSeatsFirstClass.get(i);
+                            if (formattedNumber.equals(S)) {
+                                p.bookings.get(choice).flightInfo.NonValidSeatsFirstClass.remove(i);
+                                break;
+                            }
+                        }
+                        break;
                     }
-                    break;
                 } else {
-                    int size = p.bookings.get(choice).flightInfo.NonValidSeatsFirstClass.size();
-                    for (int i = 0; i < size; i++) {
-                        String S = p.bookings.get(choice).flightInfo.NonValidSeatsFirstClass.get(i);
-                        if (formattedNumber.equals(S)) {
-                            p.bookings.get(choice).flightInfo.NonValidSeatsFirstClass.remove(i);
-                            break;
-                        }
-                    }
+                    System.out.println("Error !!,Try Again");
+                }
+
+            }
+            int it = 0;
+            for (Booking B : Passengers_Reservations_Data.reservationsList) {
+                if (p.bookings.get(choice).getBookingID().equals(B.getBookingID())) {
+                    Passengers_Reservations_Data.reservationsList.remove(it);
                     break;
                 }
-            } else {
-                System.out.println("Error !!,Try Again");
+                it++;
             }
+            p.bookings.remove(choice);
 
         }
-        int it = 0;
-        for (Booking B : Passengers_Reservations_Data.reservationsList){
-            if (p.bookings.get(choice).getBookingID().equals(B.getBookingID())){
-                Passengers_Reservations_Data.reservationsList.remove(it);
-                break;
-            }
-            it++;
-        }
-        p.bookings.remove(choice);
-
-    }
     }
 
     void cancelSeat() {
         int index = p.bookings.size() - 1;
         String seatClass = "";
-        try{
+        try {
             seatClass = p.bookings.get(index).seatForBooking.getSeatClass();
-        }catch (ArrayIndexOutOfBoundsException ex){
+        } catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println("Exception : " + ex + " in class User, function: cancelSeat!");
             System.exit(1);
         }

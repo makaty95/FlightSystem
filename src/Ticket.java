@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Ticket {
     private int ticketNumber;
     private String ticketFare;
-
     private String departureAirportName;
     private String arrivalAirportName;
     private String seatClass;
@@ -21,13 +20,14 @@ public class Ticket {
     public void setExpireDate(String expireDate) {
         this.expireDate = expireDate;
     }
-    public void defaultExpireDate()
-    {
+
+    public void defaultExpireDate() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate today = LocalDate.now();
         LocalDate After30day = today.plusDays(30);
         expireDate = dtf.format(After30day);
     }
+
     public void setDepartureAirportName(String departureAirportName) {
         this.departureAirportName = departureAirportName;
     }
@@ -55,10 +55,9 @@ public class Ticket {
         }
         try {
             this.ticketNumber = Integer.parseInt(d);
-        }catch(NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             System.out.println("Error converting ticket number to integer EXPTION: " + ex);
         }
-        // System.out.println("Ticket Number: " + this.ticketNumber);
     }
 
 

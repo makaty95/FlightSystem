@@ -36,7 +36,8 @@ public class Booking {
         this.bookingID = bookingId + count;
 
     }
-    public Booking(){
+
+    public Booking() {
 
     }
 

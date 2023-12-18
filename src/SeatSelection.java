@@ -135,8 +135,6 @@ public abstract class SeatSelection {
         System.out.println("=\n");
 
     }
-
-
 }
 
 class EconomicSeats extends SeatSelection {
@@ -146,7 +144,6 @@ class EconomicSeats extends SeatSelection {
         this.capacity = capacity;
         this.seatsClass = _seatsClass;
     }
-
 }
 
 class BusinessSeats extends SeatSelection {
@@ -156,7 +153,6 @@ class BusinessSeats extends SeatSelection {
         this.capacity = capacity;
         this.seatsClass = _seatsClass;
     }
-
 }
 
 
@@ -167,7 +163,6 @@ class FirstClassSeats extends SeatSelection {
         this.capacity = capacity;
         this.seatsClass = _seatsClass;
     }
-
 }
 
 
