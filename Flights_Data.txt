@@ -3,13 +3,14 @@ Cairo
 Alex
 01:00
 02:00
-5814
+6704
 Cairo International Airport
 Borg El Arab International Airport
 CCC103
 CSC153
 economic
 01
+02
 business
 FirstClass
 end
@@ -60,12 +61,13 @@ Alex
 Cairo
 01:00
 02:00
-4159
+4966
 Borg El Arab International Airport
 Cairo International Airport
 YUO153
 RTV923
 economic
+01
 business
 FirstClass
 end

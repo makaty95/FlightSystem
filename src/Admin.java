@@ -197,25 +197,26 @@ public class Admin {
     }
 
     public void showAllFlights() {
+        if(flightDetailsArrayList.size()==0) {
+            System.out.println("there is no flights added ");
+            return;
+        }
         int i = 1;
-        try {
-            for (FlightDetails flight : flightDetailsArrayList) {
-                System.out.println("flight number [ " + (i++) + " ]");
-                System.out.println("the departure location : " + flight.getDepartureLocation() +
-                        "\nthe arrival location : " + flight.getArrivalLocation() +
-                        "\nthe price = " + flight.getPrice() +
-                        "\nthe departure time : " + flight.getDeparture_time() +
-                        "\nthe arrival time : " + flight.getArrival_time() +
-                        "\nthe departure  airport name : " + flight.departureAirport.getAirportName() +
-                        "\nthe departure  airport location : " + flight.departureAirport.getAirportLocation() +
-                        "\nthe departure airport code : " + flight.departureAirport.getAirportCode() +
-                        "\nthe arrival  airport name : " + flight.arrivalAirport.getAirportName() +
-                        "\nthe arrival  airport location : " + flight.arrivalAirport.getAirportLocation() +
-                        "\nthe arrival airport code : " + flight.arrivalAirport.getAirportCode()+
-                        "\n______________________________________________________________________________________\n");
-            }
-        } catch (Exception e) {
-            System.out.println("Exception with the 'flightDetailsArrayList' ArrayList in class Admin!");
+        for (FlightDetails flight : flightDetailsArrayList) {
+            System.out.println("flight  [ " + i++ + " ]");
+            System.out.println("the departure location : " + flight.getDepartureLocation() +
+                    "\nflight number : "+ flight.getFlightNum()+
+                    "\nthe arrival location : " + flight.getArrivalLocation() +
+                    "\nthe price = " + flight.getPrice() +
+                    "\nthe departure time : " + flight.getDeparture_time() +
+                    "\nthe arrival time : " + flight.getArrival_time() +
+                    "\nthe departure  airport name : " + flight.departureAirport.getAirportName() +
+                    "\nthe departure  airport location : " + flight.departureAirport.getAirportLocation() +
+                    "\nthe departure airport code : " + flight.departureAirport.getAirportCode() +
+                    "\nthe arrival  airport name : " + flight.arrivalAirport.getAirportName() +
+                    "\nthe arrival  airport location : " + flight.arrivalAirport.getAirportLocation() +
+                    "\nthe arrival airport code : " + flight.arrivalAirport.getAirportCode() +
+                    "\n______________________________________________________________________________________\n");
         }
     }
 
@@ -290,6 +291,7 @@ public class Admin {
                 admins.adminMenu(admins);
             } else if (checkPoint == 2) {
                 Main.main(Point);
+                return;
             } else {
                 System.out.println("Invalid choice");
                 admins.endMenu(admins);
@@ -310,8 +312,8 @@ public class Admin {
                     num = flightsFile.readLine();
                     FlightDetails F = new FlightDetails();
                     boolean check = false;
+                    Class = num;
                     while(true){
-                        Class = num;
                         if (Class.equals("economic")){
                             while((num = flightsFile.readLine()) != null){
                                 if (num.equals("business")){
