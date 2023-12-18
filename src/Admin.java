@@ -57,7 +57,7 @@ public class Admin {
     private String[] Point;
 
     public void addFlight() {
-        System.out.print("Enter the flight details");
+        System.out.print("Enter the flight details\n");
         System.out.println("=========================\n");
         System.out.print("Enter flight departure location: ");
         boolean check=false;
@@ -232,72 +232,7 @@ public class Admin {
         }
     }
 
-    public void adminMenu(Admin admins) throws InterruptedException, IOException {
-        int setCheck = 0;
-        Scanner in = new Scanner(System.in);
-        do {
-            System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t     Hello to our system");
-            System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t------------------------------\n");
-            System.out.println("1 -> To add a flights\n2 -> To show flights\n3 -> To delete flights");
-            int checker = in.nextInt();
 
-            if (checker == 1) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                Main.clearConsole();
-                System.out.println("\n\t\t\t\t\t\t\t\t\t\t\t\t\t###### Add Flights ######");
-                admins.addFlight();
-                endMenu(admins);
-            } else if (checker == 2) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                Main.clearConsole();
-                System.out.println("\n\t\t\t\t\t\t\t\t\t\t\t\t\t###### Show Flights ######");
-                admins.showAllFlights();
-                endMenu(admins);
-            } else if (checker == 3) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                Main.clearConsole();
-                System.out.println("\n\t\t\t\t\t\t\t\t\t\t\t\t\t###### Delete Flights ######");
-                admins.deleteFlight();
-                endMenu(admins);
-            } else {
-                System.out.println("Invalid choice .... please try again");
-                setCheck = 1;
-            }
-        } while (setCheck == 1);
-    }
-
-    public void endMenu(Admin admins) throws InterruptedException, IOException {
-        System.out.println("--------------------------------------------------------------------------------------------\n");
-        System.out.println("Press 1 -> If you want to continue as Admin\nPress 2 -> If you want to back to main menu");
-
-
-        Scanner in = new Scanner(System.in);
-        boolean decision = true;
-        do {
-            int checkPoint = in.nextInt();
-            if (checkPoint == 1) {
-                admins.adminMenu(admins);
-            } else if (checkPoint == 2) {
-                Main.main(Point);
-                return;
-            } else {
-                System.out.println("Invalid choice");
-                admins.endMenu(admins);
-            }
-        } while (!decision);
-    }
 
     static void fetchData() {
         try {

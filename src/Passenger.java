@@ -34,9 +34,9 @@ public class Passenger {
     }
     public void setPassengerName(String passengerFName, String passengerLName) {
         boolean valid = false;
+        System.out.println("Please enter your information");
+        System.out.println("==============================\n");
         while (!valid) {
-            System.out.println("Please enter your information");
-            System.out.println("==============================\n");
             System.out.print("Enter your First name: ");
             Scanner sc = new Scanner(System.in);
             this.PassengerFirstName = sc.nextLine();

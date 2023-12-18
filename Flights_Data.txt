@@ -113,3 +113,17 @@ economic
 business
 FirstClass
 end
+111
+Cairo
+Alexandria
+11:50
+12:30
+4000
+Cairo International Airport
+Alexandria International Airport
+CSW
+DXW
+economic
+business
+FirstClass
+end
