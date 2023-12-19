@@ -137,7 +137,7 @@ public class Passenger {
     }
 
 
-    public void addPassengerInfo(ArrayList<Passenger> passengers) throws IOException {
+    public void addPassengerInfo() throws IOException {
         String FirstName = "", LastName = "";
         setPassengerName(FirstName, LastName);
         String Email = "";
@@ -146,7 +146,7 @@ public class Passenger {
         // Compare Data From file
 
         boolean check = true;
-        for (Passenger p : passengers) {
+        for (Passenger p : Passengers_Reservations_Data.passengersList) {
             if (p.getPassengerEmail().equals(PassengerEmail) && p.getPassengerPhone().equals(PassengerPhone)) {
                 check = false;
                 setOldPassengerID(p.getPassengerID());
@@ -164,8 +164,8 @@ public class Passenger {
 
     }
 
-    public void PassengerInfo(ArrayList<Passenger> p) throws IOException {
-        addPassengerInfo(p);
+    public void PassengerInfo() throws IOException {
+        addPassengerInfo();
         showPassengerInfo();
     }
 

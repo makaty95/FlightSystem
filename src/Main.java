@@ -139,7 +139,7 @@ public class Main {
         System.out.println("=====================");
         System.out.println("Reserve Flight Now !!");
         System.out.println("=====================\n");
-        user.enterData(Passengers_Reservations_Data.passengersList);
+        user.enterData();
         System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t✈✈✈✈  User Main Menu  ✈✈✈✈");
         System.out.print("\t\t\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------\n\n");
         boolean check = true;

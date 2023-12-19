@@ -2,8 +2,8 @@ import java.util.*;
 
 public class Payment {
 
-    private static final int counterID = 0;
-    private final int paymentID;
+    private static  int counterID = 0;
+    private  int paymentID;
     private int paymentAmount;
     private String paymentMethod;
     public String paymentStatus;

@@ -204,8 +204,8 @@ public class User {
     }
 
 
-    public void enterData(ArrayList<Passenger> passengersList) throws IOException {
-        p.PassengerInfo(passengersList);
+    public void enterData() throws IOException {
+        p.PassengerInfo();
         if (!Passengers_Reservations_Data.Old) {
             Passengers_Reservations_Data.passengersList.add(p);
         }
