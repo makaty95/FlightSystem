@@ -1,3 +1,4 @@
+import javax.swing.plaf.IconUIResource;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -308,6 +309,125 @@ public class Admin {
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    void updateFlight() {
+        showAllFlights();
+        System.out.println("Please choose flight number to update");
+        Scanner In = new Scanner(System.in);
+        int updateNum = In.nextInt();
+        int fieldNum;
+        FlightDetails updated = flightDetailsArrayList.get(updateNum - 1);
+        while (true) {
+            System.out.println("\nPlease enter the number of the field you want to update" +
+                    "\n______________________________________________________________________________________" +
+                    "\n1 -> the departure location : " + updated.getDepartureLocation() +
+                    "\n2 -> flight number : " + updated.getFlightNum() +
+                    "\n3 -> the arrival location : " + updated.getArrivalLocation() +
+                    "\n4 -> the price = " + updated.getPrice() +
+                    "\n5 -> the departure time : " + updated.getDeparture_time() +
+                    "\n6 -> the arrival time : " + updated.getArrival_time() +
+                    "\n7 -> the departure  airport name : " + updated.departureAirport.getAirportName() +
+                    "\n8 -> the departure  airport location : " + updated.departureAirport.getAirportLocation() +
+                    "\n9 -> the departure airport code : " + updated.departureAirport.getAirportCode() +
+                    "\n10 -> the arrival  airport name : " + updated.arrivalAirport.getAirportName() +
+                    "\n11 -> the arrival  airport location : " + updated.arrivalAirport.getAirportLocation() +
+                    "\n12 -> the arrival airport code : " + updated.arrivalAirport.getAirportCode() +
+                    "\n______________________________________________________________________________________\n");
+            String input = null;
+
+            do {
+                fieldNum = In.nextInt();
+                In.nextLine();
+                if (fieldNum == 1) {
+                    System.out.println("Please enter the departure location: ");
+                    input = In.nextLine();
+                    updated.departureAirport.setAirportLocation(input);
+                    break;
+                } else if (fieldNum == 2) {
+                    System.out.println("Please enter the flight number: ");
+                    input = In.nextLine();
+                    updated.setFlightNum(input);
+                    break;
+
+                } else if (fieldNum == 3) {
+                    System.out.println("Please enter the Arrival location: ");
+                    input = In.nextLine();
+                    updated.arrivalAirport.setAirportLocation(input);
+                    break;
+
+                } else if (fieldNum == 4) {
+                    System.out.println("Please enter the Price: ");
+                    input = In.nextLine();
+                    updated.setPrice(input);
+                    break;
+
+                } else if (fieldNum == 5) {
+                    System.out.println("Please enter the Departure Time: ");
+                    input = In.nextLine();
+                    updated.setDeparture_time(input);
+                    break;
+
+                } else if (fieldNum == 6) {
+                    System.out.println("Please enter the Arrival Time: ");
+                    input = In.nextLine();
+                    updated.setArrival_time(input);
+                    break;
+
+                } else if (fieldNum == 7) {
+                    System.out.println("Please enter the Departure Airport Name: ");
+                    input = In.nextLine();
+                    updated.departureAirport.setAirportName(input);
+                    break;
+
+                } else if (fieldNum == 8) {
+                    System.out.println("Please enter the Departure Airport Location: ");
+                    input = In.nextLine();
+                    updated.departureAirport.setAirportLocation(input);
+                    break;
+                } else if (fieldNum == 9) {
+                    System.out.println("Please enter the Departure Airport Code: ");
+                    input = In.nextLine();
+                    updated.departureAirport.setAirportCode(input);
+                    break;
+                } else if (fieldNum == 10) {
+                    System.out.println("Please enter the Arrival Airport Name: ");
+                    input = In.nextLine();
+                    updated.arrivalAirport.setAirportName(input);
+                    break;
+                } else if (fieldNum == 11) {
+                    System.out.println("Please enter the Arrival Airport Location: ");
+                    input = In.nextLine();
+                    updated.arrivalAirport.setAirportLocation(input);
+                    break;
+                } else if (fieldNum == 12) {
+                    System.out.println("Please enter the Arrival Airport Code: ");
+                    input = In.nextLine();
+                    updated.arrivalAirport.setAirportCode(input);
+                    break;
+                } else {
+                    System.out.println("Invalid Value .... Please try again");
+                    continue;
+                }
+            } while (true);
+            System.out.println("1 -> To update another value in this flight\n2 -> To back to your menu");
+            boolean check2 = true;
+            while (true) {
+                int check = In.nextInt();
+                if (check == 1) {
+                    break;
+                } else if (check == 2) {
+                    check2 = false;
+                    break;
+                } else {
+                    System.out.println("Invalid value .... Please try again");
+                    continue;
+                }
+            }
+            if (check2 == false){
+                break;
+            }
         }
     }
 }

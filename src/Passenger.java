@@ -40,7 +40,7 @@ public class Passenger {
             System.out.print("Enter your First name: ");
             Scanner sc = new Scanner(System.in);
             this.PassengerFirstName = sc.nextLine();
-            if (PassengerFirstName.matches("^[a-zA-Z]*$") && this.PassengerFirstName.length() > 0) {
+            if (PassengerFirstName.matches("^[a-zA-Z]*$") && this.PassengerFirstName.length() > 1) {
                 valid = true;
             } else {
                 System.out.println("Please enter your correct name");
@@ -53,11 +53,11 @@ public class Passenger {
             System.out.print("\nEnter your Last name: ");
             Scanner sc = new Scanner(System.in);
             this.PassengerLastName = sc.nextLine();
-            if (passengerLName.matches("^[a-zA-Z]*$") && this.PassengerLastName.length() > 0) {
+            if (PassengerLastName.matches("^[a-zA-Z]*$") && this.PassengerLastName.length() >1) {
                 valid1 = true;
             } else {
                 System.out.println("Please enter your correct name");
-                passengerLName = "";
+                PassengerLastName = "";
             }
         }
     }

@@ -23,10 +23,10 @@ public class User {
         boolean flag;
         do {
             flag = false;
-            System.out.print("Enter Departure Airport: ");
+            System.out.print("Enter Departure City: ");
             departureLocationEnter = In.nextLine();
 
-            System.out.print("Enter Arrival Airport: ");
+            System.out.print("Enter Arrival City: ");
             arrivalLocationEnter = In.nextLine();
 
             for (FlightDetails search : data) {
@@ -220,10 +220,10 @@ public class User {
     }
 
     public Seat userSeatSelection(ArrayList<String> NSE, ArrayList<String> NSF, ArrayList<String> NSB) {
-        EconomicSeats economic = new EconomicSeats(80, "Economy");
-        BusinessSeats business = new BusinessSeats(40, "Business");
-        FirstClassSeats firstClass = new FirstClassSeats(20, "FistClass");
-        int choice = SeatSelection.selectClass(economic, business, firstClass, NSE, NSF, NSB);
+        SeatSelection economic = new EconomicSeats(80, "Economy");
+        SeatSelection business = new BusinessSeats(40, "Business");
+        SeatSelection firstClass = new FirstClassSeats(20, "FistClass");
+        int choice = SeatSelection.selectClass((EconomicSeats) economic, (BusinessSeats) business, (FirstClassSeats) firstClass, NSE, NSF, NSB);
         Seat seat = null;
 //        We need Handle Wrong Choices -> greater than 3 (4 , 5 , ...)
         String formattedNumber;
@@ -254,7 +254,7 @@ public class User {
         Price = Price + Integer.parseInt(booking.flightInfo.price);
         Price = pay.calcPaymentAmount(Price, sClass, services);
         booking.flightInfo.setPrice(String.valueOf(Price));
-        if (pay.paymentStatus == "false") {
+        if (pay.paymentStatus.equals("false")) {
             cancelSeat();
         }
         return pay.paymentStatus;
@@ -273,7 +273,7 @@ public class User {
                     int seatNum = p.bookings.get(choice).seatForBooking.getSeat_Num();
                     String formattedNumber = String.format("%02d", seatNum);
                     String seatClass = p.bookings.get(choice).seatForBooking.getSeatClass();
-                    if (seatClass == "Economy") {
+                    if (seatClass.equals("Economy")) {
                         int size = p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.size();
                         for (int i = 0; i < size; i++) {
                             String S = p.bookings.get(choice).flightInfo.NonValidSeatsEconomic.get(i);
@@ -283,7 +283,7 @@ public class User {
                             }
                         }
                         break;
-                    } else if (seatClass == "Business") {
+                    } else if (seatClass.equals("Business")) {
                         int size = p.bookings.get(choice).flightInfo.NonValidSeatsBusiness.size();
                         for (int i = 0; i < size; i++) {
                             String S = p.bookings.get(choice).flightInfo.NonValidSeatsBusiness.get(i);
@@ -306,6 +306,7 @@ public class User {
                     }
                 } else {
                     System.out.println("Error !!,Try Again");
+
                 }
 
             }
@@ -331,10 +332,10 @@ public class User {
             System.out.println("Exception : " + ex + " in class User, function: cancelSeat!");
             System.exit(1);
         }
-        if (seatClass == "Economy") {
+        if (seatClass.equals("Economy")) {
             int i = p.bookings.get(index).flightInfo.NonValidSeatsEconomic.size() - 1;
             p.bookings.get(index).flightInfo.NonValidSeatsEconomic.remove(i);
-        } else if (seatClass == "Business") {
+        } else if (seatClass.equals("Business")) {
             int i = p.bookings.get(index).flightInfo.NonValidSeatsBusiness.size() - 1;
             p.bookings.get(index).flightInfo.NonValidSeatsBusiness.remove(i);
         } else {

@@ -1,0 +1,45 @@
+LJJ0732001
+false
+3
+Economy
+Meal
+101
+11216
+0
+null
+LJJ0732002
+true
+41
+Economy
+Wifi
+101
+11216
+149964
+18/01/2024
+TIL2740143
+true
+2
+FistClass
+Wifi & Meal
+101
+11216
+187741
+18/01/2024
+TIL2740144
+true
+3
+FistClass
+Wifi & Meal
+112
+11255
+841900
+18/01/2024
+IPM3882966
+false
+20
+FistClass
+Wifi & Meal
+112
+11255
+0
+null

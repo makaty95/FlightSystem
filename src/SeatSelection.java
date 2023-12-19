@@ -4,8 +4,8 @@ import java.util.Scanner;
 public abstract class SeatSelection {
     int capacity;
     String seatsClass;
-    int width;
-    int height;
+    private int width;
+    private int height;
     int seatNumber;
     Scanner input = new Scanner(System.in);
     Seat[][] seats;

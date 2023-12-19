@@ -3,7 +3,7 @@ Cairo
 Alex
 01:00
 02:00
-6704
+11216
 Cairo International Airport
 Borg El Arab International Airport
 CIA
@@ -23,6 +23,7 @@ economic
 36
 46
 09
+41
 business
 01
 05
@@ -36,6 +37,7 @@ FirstClass
 05
 17
 03
+02
 end
 102
 Cairo
@@ -153,8 +155,8 @@ end
 105
 Alex
 Cairo
-01:00
-02:00
+13:00
+14:00
 4966
 Borg El Arab International Airport
 Cairo International Airport
@@ -361,8 +363,8 @@ end
 111
 Cairo
 Alex
-10:00
-02:00
+11:00
+12:00
 6704
 Cairo International Airport
 Borg El Arab International Airport
@@ -400,9 +402,9 @@ end
 112
 Alex
 Cairo
-09:00
-07:00
-6965
+12:00
+13:00
+11255
 Borg El Arab International Airport
 Cairo International Airport
 AIA
@@ -431,4 +433,5 @@ business
 FirstClass
 10
 02
+03
 end

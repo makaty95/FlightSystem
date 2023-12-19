@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) throws InterruptedException, IOException {
         Admin.fetchData();
         Admin admins = new Admin();
@@ -64,7 +65,7 @@ public class Main {
         do {
             System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t     Hello to our system");
             System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t------------------------------\n");
-            System.out.println("1 -> To add a flights\n2 -> To show flights\n3 -> To delete flights");
+            System.out.println("1 -> To add a flights\n2 -> To show flights\n3 -> To delete flights\n4 -> To update flights\n5 -> To exit");
             int checker = in.nextInt();
 
             if (checker == 1) {
@@ -94,7 +95,17 @@ public class Main {
                 System.out.println("\n\t\t\t\t\t\t\t\t\t\t\t\t\t###### Delete Flights ######");
                 admins.deleteFlight();
                 adminEndMenu(admins);
-            } else {
+
+            }else if (checker == 4){
+                System.out.println("\n\t\t\t\t\t\t\t\t\t\t\t\t\t###### Update Flights ######");
+
+                admins.updateFlight();
+                   adminMenu(admins);
+            }
+            else if (checker == 5){
+                exitFunction();
+            }
+            else {
                 System.out.println("Invalid choice .... please try again");
                 setCheck = 1;
             }
